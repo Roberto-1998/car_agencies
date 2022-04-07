@@ -3,6 +3,8 @@ const cors = require('cors');
 const { port } = require('./config');
 const morgan = require('morgan');
 const helmet = require('helmet');
+const { sequelize } = require('./db/models');
+
 
 
 // Variables
@@ -23,5 +25,9 @@ app.use('/', routes);
 
 app.use(notFound)
 
-
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+sequelize.sync({ force: true })
+    .then(() => {
+        console.log('Base de Datos conectada!!');
+        app.listen(port, () => console.log(`Agencia de Autos corriendo en puerto ${port}!`))
+    })
+    .catch((err) => console.log(err))
