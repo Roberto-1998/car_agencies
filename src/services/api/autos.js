@@ -1,8 +1,15 @@
 const Auto = require('../../db/models').Auto;
+const Agencia = require('../../db/models').Agencia;
 
 const obtenerAutos = async() => {
     try {
-        const autos = await Auto.findAll();
+        const autos = await Auto.findAll({
+            include: {
+                model: Agencia,
+                as: 'agencia',
+                attributes: ['nombre']
+            }
+        });
         return autos;
 
     } catch (error) {
@@ -13,7 +20,13 @@ const obtenerAutos = async() => {
 
 const obtenerAutoPorId = async(id) => {
     try {
-        const auto = await Auto.findOne({ where: { id } });
+        const auto = await Auto.findOne({
+            include: {
+                model: Agencia,
+                as: 'agencia',
+                attributes: ['nombre']
+            }
+        }, { where: { id } });
         return auto;
 
     } catch (error) {

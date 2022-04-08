@@ -1,8 +1,21 @@
 const Renta = require('../../db/models').Renta;
+const Usuario = require('../../db/models').Usuario;
+const Auto = require('../../db/models').Auto;
 
 const obtenerRentas = async() => {
     try {
-        const rentas = await Renta.findAll();
+        const rentas = await Renta.findAll({
+            include: [{
+                    model: Usuario,
+                },
+                {
+                    model: Auto,
+                }
+            ],
+            through: {
+                model: Renta
+            }
+        });
         return rentas;
 
     } catch (error) {
