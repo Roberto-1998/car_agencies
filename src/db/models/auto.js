@@ -16,8 +16,14 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     Auto.init({
+        id: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            primaryKey: true,
+            allowNull: false
+        },
         agenciaId: {
-            type: DataTypes.INTEGER,
+            type: DataTypes.UUID,
             allowNull: false,
         },
         marca: {

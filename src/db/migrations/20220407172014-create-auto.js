@@ -3,10 +3,10 @@ module.exports = {
     async up(queryInterface, Sequelize) {
         await queryInterface.createTable('Autos', {
             id: {
-                allowNull: false,
-                autoIncrement: true,
+                type: Sequelize.UUID,
+                defaultValue: Sequelize.UUIDV4,
                 primaryKey: true,
-                type: Sequelize.INTEGER
+                allowNull: false
             },
             agenciaId: {
                 type: Sequelize.INTEGER,

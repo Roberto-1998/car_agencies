@@ -4,20 +4,31 @@ const {
 } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Agencia extends Model {
-        /**
-         * Helper method for defining associations.
-         * This method is not a part of Sequelize lifecycle.
-         * The `models/index` file will call this method automatically.
-         */
+
         static associate(models) {
-            // define association here
+
             this.hasMany(models.Auto, { as: 'autos', foreignKey: 'agenciaId' })
         }
     }
     Agencia.init({
-        nombre: DataTypes.STRING,
-        direccion: DataTypes.STRING,
-        telefono: DataTypes.STRING
+        id: {
+            allowNull: false,
+            primaryKey: true,
+            defaultValue: DataTypes.UUIDV4,
+            type: DataTypes.UUID
+        },
+        nombre: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        direccion: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
+        telefono: {
+            type: DataTypes.STRING,
+            allowNull: false,
+        },
     }, {
         tableName: 'agencias',
         sequelize,
