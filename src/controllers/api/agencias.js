@@ -1,56 +1,73 @@
 const { request, response } = require('express');
+const _agencia = require('../../services');
 
-
-const obtenerAgencias = (req = request, res = response) => {
+const obtenerAgencias = async(req = request, res = response) => {
 
     try {
+        const agencias = await _agencia.obtenerAgencias();
+        res.json(agencias);
 
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
 
     }
 
 }
 
-const crearAgencia = (req = request, res = response) => {
+const crearAgencia = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body;
+    try {
+        const agencia = await _agencia.crearAgencia(data);
+        res.status(201).json(agencia);
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+    }
+
+}
+
+const actualizarAgencia = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body
+    const { id: agenciaId } = req.params
 
     try {
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+        const msg = await _agencia.actualizarAgencia(data, agenciaId);
+        res.json({
+            msg
         })
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+
+
 
     }
 
 }
 
-const actualizarAgencia = (req = request, res = response) => {
+const borrarAgencia = async(req = request, res = response) => {
+
+    const { id } = req.params;
 
     try {
 
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+        const msg = await _agencia.eliminarAgencia(id);
+        res.json({
+            msg
         })
 
-    }
 
-}
-
-const borrarAgencia = (req = request, res = response) => {
-
-    try {
-
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
 
     }

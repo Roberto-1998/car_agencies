@@ -7,9 +7,9 @@ router.get('/', obtenerRentas)
 
 router.post('/', crearRenta)
 
-router.put('/:id', actualizarRenta)
+router.put('/:uuid', actualizarRenta)
 
-router.delete('/:id', borrarRenta)
+router.delete('/:uuid', borrarRenta)
 
 
 module.exports = router;

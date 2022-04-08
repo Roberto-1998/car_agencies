@@ -1,72 +1,82 @@
 const { request, response } = require('express');
+const _auto = require('../../services');
 
-
-const obtenerAutos = (req = request, res = response) => {
+const obtenerAutos = async(req = request, res = response) => {
 
     try {
-
-    } catch (error) {
-        console.log(error);
+        const autos = await _auto.obtenerAutos();
+        res.json(autos);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
+    }
+}
+
+const obtenerAutoPorId = async(req = request, res = response) => {
+    const { id } = req.params;
+    try {
+        const auto = await _auto.obtenerAutoPorId(id);
+        res.json(auto);
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+    }
+}
+
+const crearAuto = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body;
+    try {
+        const auto = await _auto.crearAuto(data);
+        res.status(201).json(auto);
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+    }
+
+}
+
+const actualizarAuto = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body
+    const { id: autoId } = req.params
+
+    try {
+        const msg = await _auto.actualizarAuto(data, autoId);
+        res.json({
+            msg
+        })
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+
+
 
     }
 
 }
 
-const obtenerAuto = (req = request, res = response) => {
+const borrarAuto = async(req = request, res = response) => {
+
+    const { id } = req.params;
 
     try {
 
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+        const msg = await _auto.eliminarAuto(id);
+        res.json({
+            msg
         })
 
-    }
-
-}
-
-
-
-const crearAuto = (req = request, res = response) => {
-
-    try {
-
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
-        })
-
-    }
-
-}
-
-const actualizarAuto = (req = request, res = response) => {
-
-    try {
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
-        })
-
-    }
-
-}
-
-const borrarAuto = (req = request, res = response) => {
-
-    try {
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
 
     }
@@ -76,8 +86,8 @@ const borrarAuto = (req = request, res = response) => {
 
 module.exports = {
     obtenerAutos,
-    obtenerAuto,
     crearAuto,
     actualizarAuto,
-    borrarAuto
+    borrarAuto,
+    obtenerAutoPorId
 }

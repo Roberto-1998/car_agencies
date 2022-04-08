@@ -14,6 +14,20 @@ module.exports = (sequelize, DataTypes) => {
         }
     }
     Renta.init({
+        uuid: {
+            type: DataTypes.UUID,
+            defaultValue: DataTypes.UUIDV4,
+            autoIncrement: false,
+            primaryKey: false
+        },
+        autoId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
+        usuarioId: {
+            type: DataTypes.INTEGER,
+            allowNull: false
+        },
         fechaInicio: {
             type: DataTypes.STRING,
             allowNull: false

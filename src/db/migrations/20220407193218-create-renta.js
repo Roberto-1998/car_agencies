@@ -2,11 +2,19 @@
 module.exports = {
     async up(queryInterface, Sequelize) {
         await queryInterface.createTable('Renta', {
-            id: {
-                allowNull: false,
-                autoIncrement: true,
-                primaryKey: true,
-                type: Sequelize.INTEGER
+            uuid: {
+                type: DataTypes.UUID,
+                defaultValue: DataTypes.UUIDV4,
+                autoIncrement: false,
+
+            },
+            autoId: {
+                type: DataTypes.INTEGER,
+                allowNull: false
+            },
+            usuarioId: {
+                type: DataTypes.INTEGER,
+                allowNull: false
             },
             fechaInicio: {
                 type: Sequelize.STRING,

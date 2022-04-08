@@ -1,59 +1,73 @@
 const { request, response } = require('express');
+const _usuario = require('../../services');
 
-
-const obtenerUsuarios = (req = request, res = response) => {
+const obtenerUsuarios = async(req = request, res = response) => {
 
     try {
+        const usuarios = await _usuario.obtenerUsuarios();
+        res.json(usuarios);
 
-
-
-
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
 
     }
 
 }
 
-const crearUsuario = (req = request, res = response) => {
+const crearUsuario = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body;
+    try {
+        const usuario = await _usuario.crearUsuario(data);
+        res.status(201).json(usuario);
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+    }
+
+}
+
+const actualizarUsuario = async(req = request, res = response) => {
+
+    const { id, ...data } = req.body
+    const { id: usuarioId } = req.params
 
     try {
-
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+        const msg = await _usuario.actualizarUsuario(data, usuarioId);
+        res.json({
+            msg
         })
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+
+
 
     }
 
 }
 
-const actualizarUsuario = (req = request, res = response) => {
+const borrarUsuario = async(req = request, res = response) => {
+
+    const { id } = req.params;
 
     try {
 
-    } catch (error) {
-        console.log(error);
-        res.status(500).json({
-            msg: 'Hable con el administrador'
+        const msg = await _usuario.eliminarUsuario(id);
+        res.json({
+            msg
         })
 
-    }
 
-}
-
-const borrarUsuario = (req = request, res = response) => {
-
-    try {
-
-    } catch (error) {
-        console.log(error);
+    } catch (e) {
         res.status(500).json({
-            msg: 'Hable con el administrador'
+            msg: e.message
         })
 
     }
@@ -65,5 +79,5 @@ module.exports = {
     obtenerUsuarios,
     crearUsuario,
     actualizarUsuario,
-    borrarUsuario,
+    borrarUsuario
 }
