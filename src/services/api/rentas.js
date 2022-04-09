@@ -7,9 +7,13 @@ const obtenerRentas = async() => {
         const rentas = await Renta.findAll({
             include: [{
                     model: Usuario,
+                    as: 'usuario',
+                    attributes: ['nombre', 'apellidos', 'telefono']
                 },
                 {
                     model: Auto,
+                    as: 'auto',
+                    attributes: ['marca', 'modelo']
                 }
             ],
             through: {
