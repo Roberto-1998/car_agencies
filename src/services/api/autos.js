@@ -1,3 +1,5 @@
+const { Op } = require('sequelize');
+
 const Auto = require('../../db/models').Auto;
 const Agencia = require('../../db/models').Agencia;
 
@@ -33,6 +35,32 @@ const obtenerAutoPorId = async(id) => {
         console.log(error);
         throw Error('Error al obtener usuarios');
     }
+}
+
+
+const buscarAutos = async(marca = '') => {
+
+    try {
+        const autos = await Auto.findAll({
+            where: {
+                marca: {
+                    [Op.like]: `%${marca}%`
+                }
+            }
+        });
+
+        return autos;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al buscar los autos por el nombre')
+
+    }
+
+
+
+
+
 }
 
 const crearAuto = async(data) => {
@@ -79,8 +107,9 @@ const eliminarAuto = async(id) => {
 
 module.exports = {
     obtenerAutos,
+    buscarAutos,
     crearAuto,
     actualizarAuto,
     eliminarAuto,
-    obtenerAutoPorId
+    obtenerAutoPorId,
 }

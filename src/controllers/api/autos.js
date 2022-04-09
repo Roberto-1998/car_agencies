@@ -26,6 +26,23 @@ const obtenerAutoPorId = async(req = request, res = response) => {
     }
 }
 
+const buscarAutos = async(req = request, res = response) => {
+
+    const { marca } = req.params;
+    try {
+
+        const autos = await _auto.buscarAutos(marca);
+        return res.json(autos)
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+
+    }
+
+}
+
 const crearAuto = async(req = request, res = response) => {
 
     const { id, ...data } = req.body;
@@ -89,5 +106,6 @@ module.exports = {
     crearAuto,
     actualizarAuto,
     borrarAuto,
-    obtenerAutoPorId
+    obtenerAutoPorId,
+    buscarAutos
 }
