@@ -1,4 +1,6 @@
 const { Op } = require('sequelize');
+const path = require('path');
+const fs = require('fs');
 
 const Auto = require('../../db/models').Auto;
 const Agencia = require('../../db/models').Agencia;
@@ -104,6 +106,33 @@ const eliminarAuto = async(id) => {
 
 }
 
+const uploadImage = async(id, imageName) => {
+
+    try {
+        const auto = await Auto.findByPk(id);
+
+        // Limpiar imágenes previas
+        if (auto.imagen) {
+            // Hay que borrar la imagen del servidor
+            const pathImagen = path.join(__dirname, '../../../public/uploads/images/autos', auto.imagen);
+            if (fs.existsSync(pathImagen)) {
+                fs.unlinkSync(pathImagen);
+            }
+        }
+
+        await Auto.update({ imagen: imageName }, { where: { id } });
+        return 'Imagen Actualizada'
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al actualizar imagen')
+
+    }
+
+
+
+}
+
 
 module.exports = {
     obtenerAutos,
@@ -112,4 +141,5 @@ module.exports = {
     actualizarAuto,
     eliminarAuto,
     obtenerAutoPorId,
+    uploadImage
 }

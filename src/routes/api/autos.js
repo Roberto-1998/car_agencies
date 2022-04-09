@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos } = require('../../controllers')
+const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers')
 
 
 
@@ -9,7 +9,9 @@ router.get('/:id', obtenerAutoPorId)
 
 router.get('/search/:marca', buscarAutos);
 
-router.post('/', crearAuto)
+router.post('/', crearAuto);
+
+router.put('/image/:id', uploadImage);
 
 router.put('/:id', actualizarAuto)
 

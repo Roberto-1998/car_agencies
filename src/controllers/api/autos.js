@@ -46,9 +46,11 @@ const buscarAutos = async(req = request, res = response) => {
 const crearAuto = async(req = request, res = response) => {
 
     const { id, ...data } = req.body;
+    const image = req.file;
     try {
         const auto = await _auto.crearAuto(data);
         res.status(201).json(auto);
+        console.log(image);
 
     } catch (e) {
         res.status(500).json({
@@ -57,6 +59,25 @@ const crearAuto = async(req = request, res = response) => {
     }
 
 }
+
+const uploadImage = async(req = request, res = response) => {
+
+    const { id } = req.params;
+
+    try {
+
+        const msg = await _auto.uploadImage(id, req.file.filename);
+        res.json(msg)
+
+    } catch (e) {
+        res.status(500).json({
+            msg: e.message
+        })
+
+    }
+}
+
+
 
 const actualizarAuto = async(req = request, res = response) => {
 
@@ -107,5 +128,6 @@ module.exports = {
     actualizarAuto,
     borrarAuto,
     obtenerAutoPorId,
-    buscarAutos
+    buscarAutos,
+    uploadImage
 }
