@@ -6,14 +6,18 @@ const Auto = require('../../db/models').Auto;
 const Agencia = require('../../db/models').Agencia;
 
 const obtenerAutos = async() => {
+
+    let autos;
+
     try {
-        const autos = await Auto.findAll({
+        autos = await Auto.findAll({
             include: {
                 model: Agencia,
                 as: 'agencia',
                 attributes: ['nombre']
             }
         });
+
         return autos;
 
     } catch (error) {
