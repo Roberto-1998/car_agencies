@@ -8,6 +8,7 @@ const obtenerAgencias = async(req = request, res = response) => {
         res.json(agencias);
 
     } catch (e) {
+
         res.status(500).json({
             msg: e.message
         })

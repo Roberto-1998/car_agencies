@@ -49,7 +49,6 @@ const buscarAutos = async(req = request, res = response) => {
 
         autos = await _auto.buscarAutos(marca);
 
-
         autos = autos.map((auto) => {
             if (auto.imagen) {
                 auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
@@ -68,7 +67,7 @@ const buscarAutos = async(req = request, res = response) => {
 
 }
 
-const crearAuto = async(req = request, res = response) => {
+const crearAuto = async(req = request, res = response, next) => {
 
     const { id, ...data } = req.body;
     let auto;
