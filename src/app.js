@@ -30,7 +30,22 @@ const storage = multer.diskStorage({
     }
 
 })
-app.use(multer({ storage }).single('imagen'));
+app.use(multer({
+    storage,
+    limits: {
+        fileSize: 2000000
+    },
+    fileFilter: (req, file, cb) => {
+        const fileTypes = /jpg|jpeg|png|gif/;
+        const mimetype = fileTypes.test(file.mimetype);
+        const extname = fileTypes.test(path.extname(file.originalname));
+        if (mimetype && extname) {
+            return cb(null, true)
+        }
+        cb("Error: Archivo debe ser una imagen valida")
+    }
+
+}).single('imagen'));
 
 
 
