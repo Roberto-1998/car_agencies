@@ -28,18 +28,18 @@ const obtenerAutos = async() => {
 
 const obtenerAutoPorId = async(id) => {
     try {
-        const auto = await Auto.findOne({
+        const auto = await Auto.findByPk(id, {
             include: {
                 model: Agencia,
                 as: 'agencia',
                 attributes: ['nombre']
             }
-        }, { where: { id } });
+        });
         return auto;
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuarios');
+        throw Error('Error al obtener Auto por Id');
     }
 }
 

@@ -8,7 +8,9 @@ const obtenerAutos = async(req = request, res = response) => {
         autos = await _auto.obtenerAutos();
 
         autos = autos.map((auto) => {
-            auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            if (auto.imagen) {
+                auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            }
             return auto;
         })
 
@@ -26,7 +28,9 @@ const obtenerAutoPorId = async(req = request, res = response) => {
     try {
         auto = await _auto.obtenerAutoPorId(id);
 
-        auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+        if (auto.imagen) {
+            auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+        }
 
         res.json(auto);
 
@@ -45,8 +49,11 @@ const buscarAutos = async(req = request, res = response) => {
 
         autos = await _auto.buscarAutos(marca);
 
+
         autos = autos.map((auto) => {
-            auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            if (auto.imagen) {
+                auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            }
             return auto;
         })
 
