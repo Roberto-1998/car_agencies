@@ -4,8 +4,12 @@ const _agencia = require('../../services');
 const obtenerAgencias = async(req = request, res = response, next) => {
 
     try {
-        const agencias = await _agencia.obtenerAgencias();
-        res.json(agencias);
+        const [total, agencias] = await Promise.all([_agencia.totalAgencias(), _agencia.obtenerAgencias()])
+
+        res.json({
+            total,
+            agencias
+        });
 
     } catch (e) {
         next(e)

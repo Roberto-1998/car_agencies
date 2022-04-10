@@ -23,6 +23,20 @@ const crearAgencia = async(data) => {
     }
 }
 
+const totalAgencias = async() => {
+
+    try {
+        const total = await Agencia.count();
+        return total;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al contar agencias')
+
+    }
+
+}
+
 const actualizarAgencia = async(data, id) => {
 
     try {
@@ -57,5 +71,6 @@ module.exports = {
     obtenerAgencias,
     crearAgencia,
     actualizarAgencia,
-    eliminarAgencia
+    eliminarAgencia,
+    totalAgencias
 }

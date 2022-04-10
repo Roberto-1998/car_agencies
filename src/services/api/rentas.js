@@ -28,6 +28,18 @@ const obtenerRentas = async() => {
     }
 }
 
+const totalRentas = async() => {
+    try {
+        const total = await Renta.count();
+        return total;
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al contar rentas');
+    }
+
+}
+
+
 const crearRenta = async(data) => {
 
     try {
@@ -74,5 +86,6 @@ module.exports = {
     obtenerRentas,
     crearRenta,
     actualizarRenta,
-    eliminarRenta
+    eliminarRenta,
+    totalRentas
 }

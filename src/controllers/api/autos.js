@@ -2,10 +2,12 @@ const { request, response } = require('express');
 const _auto = require('../../services');
 
 const obtenerAutos = async(req = request, res = response, next) => {
-    let autos;
 
     try {
-        autos = await _auto.obtenerAutos();
+
+        let [total, autos] = await Promise.all([
+            _auto.totalAutos(), _auto.obtenerAutos()
+        ])
 
         autos = autos.map((auto) => {
             if (auto.imagen) {
@@ -14,7 +16,10 @@ const obtenerAutos = async(req = request, res = response, next) => {
             return auto;
         })
 
-        res.json(autos);
+        res.json({
+            total,
+            autos
+        });
     } catch (e) {
         next(e);
     }
@@ -40,10 +45,12 @@ const obtenerAutoPorId = async(req = request, res = response, next) => {
 const buscarAutos = async(req = request, res = response, next) => {
 
     const { marca } = req.params;
-    let autos;
+
     try {
 
-        autos = await _auto.buscarAutos(marca);
+        let [total, autos] = await Promise.all([
+            _auto.totalAutos(), _auto.buscarAutos(marca)
+        ])
 
         autos = autos.map((auto) => {
             if (auto.imagen) {
@@ -52,7 +59,10 @@ const buscarAutos = async(req = request, res = response, next) => {
             return auto;
         })
 
-        return res.json(autos)
+        return res.json({
+            total,
+            autos
+        })
 
     } catch (e) {
         next(e);

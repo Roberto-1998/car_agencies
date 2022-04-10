@@ -11,6 +11,17 @@ const obtenerUsuarios = async() => {
     }
 }
 
+const totalUsuarios = async() => {
+    try {
+        const total = await Usuario.count();
+        return total;
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al contar usuarios');
+    }
+
+}
+
 const crearUsuario = async(data) => {
 
     try {
@@ -57,5 +68,6 @@ module.exports = {
     obtenerUsuarios,
     crearUsuario,
     actualizarUsuario,
-    eliminarUsuario
+    eliminarUsuario,
+    totalUsuarios
 }

@@ -43,6 +43,19 @@ const obtenerAutoPorId = async(id) => {
     }
 }
 
+const totalAutos = async() => {
+
+    try {
+        const total = await Auto.count();
+        return total;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al contar autos')
+
+    }
+
+}
 
 const buscarAutos = async(marca = '') => {
 
@@ -145,5 +158,6 @@ module.exports = {
     actualizarAuto,
     eliminarAuto,
     obtenerAutoPorId,
-    uploadImage
+    uploadImage,
+    totalAutos
 }

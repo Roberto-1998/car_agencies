@@ -4,8 +4,14 @@ const _renta = require('../../services');
 const obtenerRentas = async(req = request, res = response, next) => {
 
     try {
-        const rentas = await _renta.obtenerRentas();
-        res.json(rentas);
+        const [total, rentas] = await Promise.all([
+            _renta.totalRentas(), _renta.obtenerRentas()
+        ])
+
+        res.json({
+            total,
+            rentas
+        });
 
     } catch (e) {
         next(e)

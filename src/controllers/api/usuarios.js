@@ -5,8 +5,14 @@ const _usuario = require('../../services');
 const obtenerUsuarios = async(req = request, res = response, next) => {
 
     try {
-        const usuarios = await _usuario.obtenerUsuarios();
-        res.json(usuarios);
+        const [total, usuarios] = await Promise.all([
+            _usuario.totalUsuarios(), _usuario.obtenerUsuarios()
+        ])
+
+        res.json({
+            total,
+            usuarios
+        });
 
     } catch (e) {
         next(e)
