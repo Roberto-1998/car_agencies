@@ -1,23 +1,19 @@
 const { request, response } = require('express');
 const _agencia = require('../../services');
 
-const obtenerAgencias = async(req = request, res = response) => {
+const obtenerAgencias = async(req = request, res = response, next) => {
 
     try {
         const agencias = await _agencia.obtenerAgencias();
         res.json(agencias);
 
     } catch (e) {
-
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }
 
-const crearAgencia = async(req = request, res = response) => {
+const crearAgencia = async(req = request, res = response, next) => {
 
     const { id, ...data } = req.body;
     try {
@@ -25,14 +21,12 @@ const crearAgencia = async(req = request, res = response) => {
         res.status(201).json(agencia);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e);
     }
 
 }
 
-const actualizarAgencia = async(req = request, res = response) => {
+const actualizarAgencia = async(req = request, res = response, next) => {
 
     const { id, ...data } = req.body
     const { id: agenciaId } = req.params
@@ -44,17 +38,12 @@ const actualizarAgencia = async(req = request, res = response) => {
         })
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
-
-
+        next(e)
     }
 
 }
 
-const borrarAgencia = async(req = request, res = response) => {
+const borrarAgencia = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
@@ -67,10 +56,7 @@ const borrarAgencia = async(req = request, res = response) => {
 
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }

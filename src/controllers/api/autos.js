@@ -1,7 +1,7 @@
 const { request, response } = require('express');
 const _auto = require('../../services');
 
-const obtenerAutos = async(req = request, res = response) => {
+const obtenerAutos = async(req = request, res = response, next) => {
     let autos;
 
     try {
@@ -16,13 +16,11 @@ const obtenerAutos = async(req = request, res = response) => {
 
         res.json(autos);
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e);
     }
 }
 
-const obtenerAutoPorId = async(req = request, res = response) => {
+const obtenerAutoPorId = async(req = request, res = response, next) => {
     const { id } = req.params;
     let auto
     try {
@@ -35,13 +33,11 @@ const obtenerAutoPorId = async(req = request, res = response) => {
         res.json(auto);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e);
     }
 }
 
-const buscarAutos = async(req = request, res = response) => {
+const buscarAutos = async(req = request, res = response, next) => {
 
     const { marca } = req.params;
     let autos;
@@ -59,10 +55,7 @@ const buscarAutos = async(req = request, res = response) => {
         return res.json(autos)
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e);
     }
 
 }
@@ -77,14 +70,12 @@ const crearAuto = async(req = request, res = response, next) => {
         res.status(201).json(auto);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e);
     }
 
 }
 
-const uploadImage = async(req = request, res = response) => {
+const uploadImage = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
@@ -94,16 +85,13 @@ const uploadImage = async(req = request, res = response) => {
         res.json(msg)
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e);
     }
 }
 
 
 
-const actualizarAuto = async(req = request, res = response) => {
+const actualizarAuto = async(req = request, res = response, next) => {
 
     const { id, ...data } = req.body
     const { id: autoId } = req.params
@@ -115,17 +103,12 @@ const actualizarAuto = async(req = request, res = response) => {
         })
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
-
-
+        next(e);
     }
 
 }
 
-const borrarAuto = async(req = request, res = response) => {
+const borrarAuto = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
@@ -137,10 +120,7 @@ const borrarAuto = async(req = request, res = response) => {
         })
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e);
     }
 
 }

@@ -2,22 +2,19 @@ const { request, response } = require('express');
 const bcrypt = require('bcryptjs');
 const _usuario = require('../../services');
 
-const obtenerUsuarios = async(req = request, res = response) => {
+const obtenerUsuarios = async(req = request, res = response, next) => {
 
     try {
         const usuarios = await _usuario.obtenerUsuarios();
         res.json(usuarios);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }
 
-const crearUsuario = async(req = request, res = response) => {
+const crearUsuario = async(req = request, res = response, next) => {
 
     const { id, password, ...data } = req.body;
     try {
@@ -30,14 +27,12 @@ const crearUsuario = async(req = request, res = response) => {
         res.status(201).json(usuario);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e)
     }
 
 }
 
-const actualizarUsuario = async(req = request, res = response) => {
+const actualizarUsuario = async(req = request, res = response, next) => {
 
     const { id, password, ...data } = req.body
     const { id: usuarioId } = req.params
@@ -54,17 +49,12 @@ const actualizarUsuario = async(req = request, res = response) => {
         })
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
-
-
+        next(e)
     }
 
 }
 
-const borrarUsuario = async(req = request, res = response) => {
+const borrarUsuario = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
@@ -77,10 +67,7 @@ const borrarUsuario = async(req = request, res = response) => {
 
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }

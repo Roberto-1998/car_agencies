@@ -1,22 +1,19 @@
 const { request, response } = require('express');
 const _renta = require('../../services');
 
-const obtenerRentas = async(req = request, res = response) => {
+const obtenerRentas = async(req = request, res = response, next) => {
 
     try {
         const rentas = await _renta.obtenerRentas();
         res.json(rentas);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }
 
-const crearRenta = async(req = request, res = response) => {
+const crearRenta = async(req = request, res = response, next) => {
 
     const { uuid, ...data } = req.body;
     try {
@@ -24,14 +21,12 @@ const crearRenta = async(req = request, res = response) => {
         res.status(201).json(renta);
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
+        next(e)
     }
 
 }
 
-const actualizarRenta = async(req = request, res = response) => {
+const actualizarRenta = async(req = request, res = response, next) => {
 
     const { uuid, ...data } = req.body
     const { uuid: rentaUuid } = req.params
@@ -43,17 +38,12 @@ const actualizarRenta = async(req = request, res = response) => {
         })
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
-
-
+        next(e)
     }
 
 }
 
-const borrarRenta = async(req = request, res = response) => {
+const borrarRenta = async(req = request, res = response, next) => {
 
     const { uuid } = req.params;
 
@@ -66,10 +56,7 @@ const borrarRenta = async(req = request, res = response) => {
 
 
     } catch (e) {
-        res.status(500).json({
-            msg: e.message
-        })
-
+        next(e)
     }
 
 }
