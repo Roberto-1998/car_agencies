@@ -7,9 +7,24 @@ const obtenerAgencias = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuarios');
+        throw Error('Error al obtener agencias');
     }
 }
+
+const obtenerAgenciaPorId = async(id = '') => {
+    try {
+        const agencia = await Agencia.findByPk(id);
+        return agencia;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al obtener agencia por id');
+    }
+}
+
+
+
+
 
 const crearAgencia = async(data) => {
 
@@ -72,5 +87,6 @@ module.exports = {
     crearAgencia,
     actualizarAgencia,
     eliminarAgencia,
-    totalAgencias
+    totalAgencias,
+    obtenerAgenciaPorId
 }

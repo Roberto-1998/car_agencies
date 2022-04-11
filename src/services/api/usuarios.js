@@ -11,6 +11,28 @@ const obtenerUsuarios = async() => {
     }
 }
 
+const obtenerUsuarioPorId = async(id = '') => {
+    try {
+        const usuario = await Usuario.findByPk(id);
+        return usuario;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al obtener usuario por id');
+    }
+}
+
+const obtenerUsuarioPorCorreo = async(correo = '') => {
+    try {
+        const usuario = await Usuario.findOne({ where: { correo } });
+        return usuario;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al obtener usuario por correo');
+    }
+}
+
 const totalUsuarios = async() => {
     try {
         const total = await Usuario.count();
@@ -69,5 +91,7 @@ module.exports = {
     crearUsuario,
     actualizarUsuario,
     eliminarUsuario,
-    totalUsuarios
+    totalUsuarios,
+    obtenerUsuarioPorId,
+    obtenerUsuarioPorCorreo
 }

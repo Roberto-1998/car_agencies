@@ -28,8 +28,34 @@ const obtenerRentas = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuarios');
+        throw Error('Error al obtener rentas');
     }
+}
+
+const obtenerRentaPorUuid = async(uuid = '') => {
+    try {
+        const renta = await Renta.findOne({ where: { uuid } });
+        return renta;
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al obtener renta por uuid');
+    }
+}
+
+const verificarUnicaRenta = async(usuarioId = '', autoId = '') => {
+
+    try {
+
+        const renta = await Renta.findOne({ where: { usuarioId, autoId } });
+        return renta
+
+    } catch (error) {
+        console.log(error);
+        throw Error('Error al verificar unica renta');
+
+    }
+
 }
 
 const totalRentas = async() => {
@@ -104,5 +130,7 @@ module.exports = {
     crearRenta,
     actualizarRenta,
     eliminarRenta,
-    totalRentas
+    totalRentas,
+    obtenerRentaPorUuid,
+    verificarUnicaRenta
 }
