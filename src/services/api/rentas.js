@@ -87,6 +87,9 @@ const crearRenta = async(data) => {
 
 
         const renta = await Renta.create(data);
+
+        await Auto.update({ disponible: false }, { where: { id: autoId } });
+
         return renta
 
     } catch (error) {
