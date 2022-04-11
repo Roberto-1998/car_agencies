@@ -72,7 +72,7 @@ const buscarAutos = async(req = request, res = response, next) => {
 
 const crearAuto = async(req = request, res = response, next) => {
 
-    const { id, ...data } = req.body;
+    const { id, disponible, ...data } = req.body;
     let auto;
     try {
         auto = await _auto.crearAuto(data);
@@ -103,7 +103,7 @@ const uploadImage = async(req = request, res = response, next) => {
 
 const actualizarAuto = async(req = request, res = response, next) => {
 
-    const { id, ...data } = req.body
+    const { id, disponible, ...data } = req.body
     const { id: autoId } = req.params
 
     try {
