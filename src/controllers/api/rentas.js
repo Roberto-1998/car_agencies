@@ -21,7 +21,7 @@ const obtenerRentas = async(req = request, res = response, next) => {
 
 const crearRenta = async(req = request, res = response, next) => {
 
-    const { uuid, dias, ...data } = req.body;
+    const { uuid, dias, importeTotal, ...data } = req.body;
     try {
         const renta = await _renta.crearRenta(data);
         res.status(201).json(renta);

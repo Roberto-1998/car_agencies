@@ -4,6 +4,8 @@ const Renta = require('../../db/models').Renta;
 const Usuario = require('../../db/models').Usuario;
 const Auto = require('../../db/models').Auto;
 
+const _auto = require('./autos');
+
 const obtenerRentas = async() => {
     try {
         const rentas = await Renta.findAll({
@@ -45,12 +47,17 @@ const totalRentas = async() => {
 const crearRenta = async(data) => {
 
     try {
-        const { fechaInicio, fechaFinal } = data;
+        const { autoId, fechaInicio, fechaFinal } = data;
 
         const dateInicio = moment(fechaInicio);
         const dateFinal = moment(fechaFinal);
 
-        data.dias = dateFinal.diff(dateInicio, 'days');
+        const diasRenta = dateFinal.diff(dateInicio, 'days');
+
+        const autoRentado = await _auto.obtenerAutoPorId(data.autoId);
+
+        data.dias = diasRenta;
+        data.importeTotal = diasRenta * autoRentado.precio;
 
 
         const renta = await Renta.create(data);
