@@ -39,6 +39,14 @@ const existeRentaPorUuid = async(uuid = '') => {
     }
 }
 
+const verificarAutoDisponible = async(autoId = '') => {
+
+    const auto = await _auto.obtenerAutoPorId(autoId);
+    if (!auto.disponible) {
+        throw new Error(`El auto con id ${autoId} no está disponible`)
+    }
+
+}
 
 
 
@@ -50,5 +58,5 @@ module.exports = {
     existeUsuarioPorId,
     existeRentaPorUuid,
     existeUsuarioPorCorreo,
-
+    verificarAutoDisponible
 }

@@ -85,7 +85,6 @@ const crearRenta = async(data) => {
         data.dias = diasRenta;
         data.importeTotal = diasRenta * autoRentado.precio;
 
-
         const renta = await Renta.create(data);
 
         await Auto.update({ disponible: false }, { where: { id: autoId } });
