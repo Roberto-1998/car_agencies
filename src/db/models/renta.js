@@ -31,11 +31,11 @@ module.exports = (sequelize, DataTypes) => {
             allowNull: false
         },
         fechaInicio: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         fechaFinal: {
-            type: DataTypes.STRING,
+            type: DataTypes.DATEONLY,
             allowNull: false
         },
         dias: {

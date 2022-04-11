@@ -17,11 +17,11 @@ module.exports = {
                 allowNull: false
             },
             fechaInicio: {
-                type: Sequelize.STRING,
+                type: Sequelize.DATEONLY,
                 allowNull: false
             },
             fechaFinal: {
-                type: Sequelize.STRING,
+                type: Sequelize.DATEONLY,
                 allowNull: false
             },
             dias: {

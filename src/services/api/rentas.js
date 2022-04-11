@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 const Renta = require('../../db/models').Renta;
 const Usuario = require('../../db/models').Usuario;
 const Auto = require('../../db/models').Auto;
@@ -43,6 +45,14 @@ const totalRentas = async() => {
 const crearRenta = async(data) => {
 
     try {
+        const { fechaInicio, fechaFinal } = data;
+
+        const dateInicio = moment(fechaInicio);
+        const dateFinal = moment(fechaFinal);
+
+        data.dias = dateFinal.diff(dateInicio, 'days');
+
+
         const renta = await Renta.create(data);
         return renta
 
