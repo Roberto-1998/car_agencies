@@ -11,6 +11,7 @@ const validarRentaAutoUsuario = async(req, res, next) => {
         if (renta) {
             next(createError(400, `El usuario ${usuarioId} ya tiene asignada una renta para el auto ${autoId}`))
         }
+        next();
 
     } catch (e) {
         next(e)

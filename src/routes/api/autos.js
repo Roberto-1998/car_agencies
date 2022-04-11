@@ -2,7 +2,7 @@ const router = require('express').Router();
 const { check } = require('express-validator');
 const { validarCampos } = require('../../middlewares')
 const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers');
-const { existeAutoPorId } = require('../../helpers/api/db-models-validators');
+const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers/api/db-models-validators');
 
 
 
@@ -24,6 +24,7 @@ router.post('/', [
     check('precio', 'El precio de alquiler es requerido').notEmpty(),
     check('year', 'El año del auto es requerido').notEmpty(),
     check('agenciaId', 'La agencia a la que pertenece el auto es requerida').notEmpty(),
+    check('agenciaId').custom(existeAgenciaPorId),
     validarCampos
 ], crearAuto);
 
