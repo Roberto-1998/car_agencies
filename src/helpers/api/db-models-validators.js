@@ -42,8 +42,10 @@ const existeRentaPorUuid = async(uuid = '') => {
 const verificarAutoDisponible = async(autoId = '') => {
 
     const auto = await _auto.obtenerAutoPorId(autoId);
-    if (!auto.disponible) {
-        throw new Error(`El auto con id ${autoId} no está disponible`)
+    if (auto) {
+        if (!auto.disponible) {
+            throw new Error(`El auto con id ${autoId} no está disponible`)
+        }
     }
 
 }
