@@ -1,20 +1,25 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos, esAdminRol } = require('../../middlewares')
+const { validarCampos, esAdminRol, nodeCache } = require('../../middlewares')
 const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers');
 const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers/api/db-models-validators');
 const { validarJWT } = require('../../middlewares/validar-token');
 
 
 
-router.get('/', obtenerAutos)
+router.get('/', [
+    nodeCache(300)
+], obtenerAutos)
 
 router.get('/:id', [
     check('id').custom(existeAutoPorId),
-    validarCampos
+    validarCampos,
+    nodeCache(300)
 ], obtenerAutoPorId)
 
-router.get('/search/:marca', buscarAutos);
+router.get('/search/:marca', [
+    nodeCache(300)
+], buscarAutos);
 
 router.post('/', [
     validarJWT,

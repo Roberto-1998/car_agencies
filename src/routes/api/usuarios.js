@@ -2,12 +2,14 @@ const router = require('express').Router();
 const { check } = require('express-validator');
 const { obtenerUsuarios, crearUsuario, borrarUsuario, actualizarUsuario } = require('../../controllers');
 const { existeUsuarioPorId, existeUsuarioPorCorreo, existe, existeRolPorNombre } = require('../../helpers/api/db-models-validators');
-const { esAdminRol } = require('../../middlewares');
+const { esAdminRol, nodeCache } = require('../../middlewares');
 const { validarCampos } = require('../../middlewares/validar-campos');
 const { validarJWT } = require('../../middlewares/validar-token');
 
 
-router.get('/', obtenerUsuarios)
+router.get('/', [
+    nodeCache(300)
+], obtenerUsuarios)
 
 router.post('/', [
 

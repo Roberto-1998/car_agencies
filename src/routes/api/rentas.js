@@ -1,13 +1,15 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos, validarRentaAutoUsuario, esAdminRol } = require('../../middlewares');
-const { existeAutoPorId, existeUsuarioPorId, existeRentaPorUuid, verificarAutoDisponible } = require('../../helpers');
+const { validarCampos, validarRentaAutoUsuario, esAdminRol, nodeCache } = require('../../middlewares');
+const { existeAutoPorId, existeRentaPorUuid, verificarAutoDisponible } = require('../../helpers');
 const { obtenerRentas, crearRenta, borrarRenta, actualizarRenta } = require('../../controllers');
 const { validarJWT } = require('../../middlewares/validar-token');
 
 
 
-router.get('/', obtenerRentas)
+router.get('/', [
+    nodeCache(300)
+], obtenerRentas)
 
 router.post('/', [
     validarJWT,

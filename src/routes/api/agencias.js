@@ -2,12 +2,14 @@ const router = require('express').Router();
 const { check } = require('express-validator');
 const { obtenerAgencias, crearAgencia, actualizarAgencia, borrarAgencia } = require('../../controllers');
 const { existeAgenciaPorId } = require('../../helpers');
-const { validarCampos, esAdminRol } = require('../../middlewares');
-const { validarJWT } = require('../../middlewares/validar-token');
+const { validarCampos, esAdminRol, validarJWT, nodeCache } = require('../../middlewares');
 
 
 
-router.get('/', obtenerAgencias)
+
+router.get('/', [
+    nodeCache(300)
+], obtenerAgencias)
 
 router.post('/', [
     validarJWT,
