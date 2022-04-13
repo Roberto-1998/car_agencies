@@ -1,14 +1,17 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos, validarRentaAutoUsuario } = require('../../middlewares');
+const { validarCampos, validarRentaAutoUsuario, esAdminRol } = require('../../middlewares');
 const { existeAutoPorId, existeUsuarioPorId, existeRentaPorUuid, verificarAutoDisponible } = require('../../helpers');
-const { obtenerRentas, crearRenta, borrarRenta, actualizarRenta } = require('../../controllers')
+const { obtenerRentas, crearRenta, borrarRenta, actualizarRenta } = require('../../controllers');
+const { validarJWT } = require('../../middlewares/validar-token');
 
 
 
 router.get('/', obtenerRentas)
 
 router.post('/', [
+    validarJWT,
+    esAdminRol,
     check('autoId', 'El auto rentado es requerido').notEmpty(),
     check('autoId').custom(existeAutoPorId),
     check('fechaInicio', 'La fecha inicial del alquiler es requerida').notEmpty(),
@@ -19,11 +22,15 @@ router.post('/', [
 ], crearRenta)
 
 router.put('/:uuid', [
+    validarJWT,
+    esAdminRol,
     check('uuid').custom(existeRentaPorUuid),
     validarCampos
 ], actualizarRenta)
 
 router.delete('/:uuid', [
+    validarJWT,
+    esAdminRol,
     check('uuid').custom(existeRentaPorUuid),
     validarCampos
 ], borrarRenta)

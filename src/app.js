@@ -76,7 +76,7 @@ app.use((err, req, res, next) => {
 })
 
 
-sequelize.sync({ force: true })
+sequelize.sync({ force: false })
     .then(() => {
         console.log('Base de Datos conectada!!');
         app.listen(port, () => console.log(`Agencia de Autos corriendo en puerto ${port}!`))

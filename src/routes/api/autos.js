@@ -1,8 +1,9 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos } = require('../../middlewares')
+const { validarCampos, esAdminRol } = require('../../middlewares')
 const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers');
 const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers/api/db-models-validators');
+const { validarJWT } = require('../../middlewares/validar-token');
 
 
 
@@ -16,6 +17,8 @@ router.get('/:id', [
 router.get('/search/:marca', buscarAutos);
 
 router.post('/', [
+    validarJWT,
+    esAdminRol,
     check('marca', 'La marca es requerida').notEmpty(),
     check('modelo', 'El modelo es requerido').notEmpty(),
     check('km', 'Los kilometros son requeridos').notEmpty(),
@@ -29,17 +32,23 @@ router.post('/', [
 ], crearAuto);
 
 router.put('/image/:id', [
+    validarJWT,
+    esAdminRol,
     check('imagen', 'La imagen es requerida').notEmpty(),
     check('id').custom(existeAutoPorId),
     validarCampos
 ], uploadImage);
 
 router.put('/:id', [
+    validarJWT,
+    esAdminRol,
     check('id').custom(existeAutoPorId),
     validarCampos
 ], actualizarAuto)
 
 router.delete('/:id', [
+    validarJWT,
+    esAdminRol,
     check('id').custom(existeAutoPorId),
     validarCampos
 ], borrarAuto)
