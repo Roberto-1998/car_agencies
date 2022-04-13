@@ -14,7 +14,7 @@ const login = async(req = request, res = response, next) => {
             const iguales = bcrypt.compareSync(password, usuario.password);
             if (iguales) {
                 // Generar JWT
-                const payload = { id: usuario.id }
+                const payload = { usuarioId: usuario.id }
                 const token = await generarJWT(payload);
 
                 res.json({
