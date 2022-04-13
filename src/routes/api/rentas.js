@@ -8,7 +8,7 @@ const { validarJWT } = require('../../middlewares/validar-token');
 
 
 router.get('/', [
-    nodeCache(300)
+    nodeCache(5)
 ], obtenerRentas)
 
 router.post('/', [

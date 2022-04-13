@@ -8,17 +8,17 @@ const { validarJWT } = require('../../middlewares/validar-token');
 
 
 router.get('/', [
-    nodeCache(300)
+    nodeCache(5)
 ], obtenerAutos)
 
 router.get('/:id', [
     check('id').custom(existeAutoPorId),
     validarCampos,
-    nodeCache(300)
+    nodeCache(5)
 ], obtenerAutoPorId)
 
 router.get('/search/:marca', [
-    nodeCache(300)
+    nodeCache(5)
 ], buscarAutos);
 
 router.post('/', [
