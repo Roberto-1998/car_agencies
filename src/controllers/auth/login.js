@@ -2,6 +2,7 @@ const { request, response } = require("express");
 const createError = require('http-errors');
 const bcrypt = require('bcryptjs');
 const _usuario = require('../../services');
+const { generarJWT } = require("../../helpers/auth/auth");
 
 const login = async(req = request, res = response, next) => {
 
@@ -12,9 +13,15 @@ const login = async(req = request, res = response, next) => {
         if (usuario) {
             const iguales = bcrypt.compareSync(password, usuario.password);
             if (iguales) {
-                return res.json({
-                    message: 'Usuario Logueado'
+                // Generar JWT
+                const payload = { id: usuario.id }
+                const token = await generarJWT(payload);
+
+                res.json({
+                    token
                 })
+
+
             } else {
                 return next(createError(400, "Error usuario-password"))
             }
