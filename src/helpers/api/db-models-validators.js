@@ -2,6 +2,7 @@ const _agencia = require('../../services');
 const _auto = require('../../services');
 const _usuario = require('../../services');
 const _renta = require('../../services');
+const _rol = require('../../services');
 
 const existeAgenciaPorId = async(id = '') => {
     const agencia = await _agencia.obtenerAgenciaPorId(id);
@@ -29,10 +30,16 @@ const existeUsuarioPorCorreo = async(correo = '') => {
     if (usuario) {
         throw new Error(`El correo ${correo} ya se encuentra registrado`)
     }
-
 }
 
+const existeRolPorNombre = async(nombre = '') => {
 
+    const rol = await _rol.buscarRolPorNombre(nombre);
+    if (!rol) {
+        throw new Error(`No existe un rol tipo - ${nombre}`)
+    }
+
+}
 
 const existeRentaPorUuid = async(uuid = '') => {
     const renta = await _renta.obtenerRentaPorUuid(uuid);
@@ -63,5 +70,6 @@ module.exports = {
     existeRentaPorUuid,
     existeUsuarioPorCorreo,
     verificarAutoDisponible,
+    existeRolPorNombre
 
 }

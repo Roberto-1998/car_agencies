@@ -47,7 +47,7 @@ module.exports = {
                 allowNull: false,
             },
             disponible: {
-                type: DataTypes.BOOLEAN,
+                type: Sequelize.BOOLEAN,
                 allowNull: false,
                 defaultValue: true
             },

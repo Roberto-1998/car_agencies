@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
 const { obtenerUsuarios, crearUsuario, borrarUsuario, actualizarUsuario } = require('../../controllers');
-const { existeUsuarioPorId, existeUsuarioPorCorreo } = require('../../helpers/api/db-models-validators');
+const { existeUsuarioPorId, existeUsuarioPorCorreo, existe, existeRolPorNombre } = require('../../helpers/api/db-models-validators');
 const { validarCampos } = require('../../middlewares/validar-campos');
 
 
@@ -15,6 +15,8 @@ router.post('/', [
     check('password', 'El password es requerido').notEmpty(),
     check('telefono', 'El telefono es requerido').notEmpty(),
     check('edad', 'La edad es requerida').notEmpty(),
+    check('rol', 'El rol del usuario es requerido').notEmpty(),
+    check('rol').custom(existeRolPorNombre),
     validarCampos
 ], crearUsuario)
 

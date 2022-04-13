@@ -17,6 +17,8 @@ module.exports = (sequelize, DataTypes) => {
         static associate(models) {
             // define association here
             this.belongsToMany(models.Auto, { through: models.Renta, foreignKey: 'usuarioId', as: 'usuario' });
+
+
         }
     }
     Usuario.init({
@@ -49,7 +51,12 @@ module.exports = (sequelize, DataTypes) => {
         telefono: {
             type: DataTypes.STRING,
             allowNull: false
-        }
+        },
+        rol: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            defaultValue: 'user_rol'
+        },
     }, {
         tableName: 'usuarios',
         sequelize,
