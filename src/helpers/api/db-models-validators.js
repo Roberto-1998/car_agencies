@@ -32,6 +32,8 @@ const existeUsuarioPorCorreo = async(correo = '') => {
 
 }
 
+
+
 const existeRentaPorUuid = async(uuid = '') => {
     const renta = await _renta.obtenerRentaPorUuid(uuid);
     if (!renta) {
@@ -60,5 +62,6 @@ module.exports = {
     existeUsuarioPorId,
     existeRentaPorUuid,
     existeUsuarioPorCorreo,
-    verificarAutoDisponible
+    verificarAutoDisponible,
+
 }
