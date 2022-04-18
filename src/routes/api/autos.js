@@ -1,9 +1,10 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos, esAdminRol, nodeCache } = require('../../middlewares')
+const { validarCampos, esAdminRol, nodeCache, tieneImagen } = require('../../middlewares')
 const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers');
 const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers/api/db-models-validators');
 const { validarJWT } = require('../../middlewares/validar-token');
+
 
 
 
@@ -39,8 +40,7 @@ router.post('/', [
 router.put('/image/:id', [
     validarJWT,
     esAdminRol,
-    check('imagen', 'La imagen es requerida').notEmpty(),
-    check('id').custom(existeAutoPorId),
+    tieneImagen,
     validarCampos
 ], uploadImage);
 

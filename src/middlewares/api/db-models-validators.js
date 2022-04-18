@@ -2,6 +2,7 @@ const { request, response } = require('express');
 const _renta = require('../../services');
 const createError = require('http-errors');
 
+
 const validarRentaAutoUsuario = async(req, res, next) => {
 
     const { usuarioId, autoId } = req.body;
@@ -18,6 +19,20 @@ const validarRentaAutoUsuario = async(req, res, next) => {
     }
 }
 
+
+const tieneImagen = (req = request, res = response, next) => {
+
+    if (!req.file) {
+        return next(createError(400, "No hay imagen para subir"))
+    }
+
+    next();
+
+}
+
+
+
 module.exports = {
-    validarRentaAutoUsuario
+    validarRentaAutoUsuario,
+    tieneImagen
 }

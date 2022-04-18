@@ -1,6 +1,7 @@
 const { request, response } = require('express');
 const _auto = require('../../services');
 
+
 const obtenerAutos = async(req = request, res = response, next) => {
 
     try {
@@ -89,8 +90,9 @@ const uploadImage = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
-    try {
+    console.log(req.file);
 
+    try {
         const msg = await _auto.uploadImage(id, req.file.filename);
         res.json(msg)
 

@@ -25,6 +25,7 @@ app.use(morgan('dev'));
 app.use(helmet());
 
 const storage = multer.diskStorage({
+
     destination: path.join(__dirname, '../public/uploads/images/autos'),
     filename: (req, file, cb) => {
         cb(null, uuidv4() + '-' + file.originalname);
@@ -34,7 +35,7 @@ const storage = multer.diskStorage({
 app.use(multer({
     storage,
     limits: {
-        fileSize: 2000000
+        fileSize: 1000000
     },
     fileFilter: (req, file, cb) => {
         const fileTypes = /jpg|jpeg|png|gif/;
@@ -43,9 +44,8 @@ app.use(multer({
         if (mimetype && extname) {
             return cb(null, true)
         }
-        cb("Error: Archivo debe ser una imagen valida");
+        cb(createError(400, `Error debe ser una imagen valida - ${fileTypes}`));
     }
-
 }).single('imagen'));
 
 
