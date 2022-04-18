@@ -49,9 +49,9 @@ const actualizarUsuario = async(req = request, res = response, next) => {
             data.password = bcrypt.hashSync(password, salt);
         }
 
-        const msg = await _usuario.actualizarUsuario(data, usuarioId);
+        await _usuario.actualizarUsuario(data, usuarioId);
         res.json({
-            msg
+            msg: req.t('usuario.usuario_actualizado_exito')
         })
 
     } catch (e) {
@@ -66,9 +66,9 @@ const borrarUsuario = async(req = request, res = response, next) => {
 
     try {
 
-        const msg = await _usuario.eliminarUsuario(id);
+        await _usuario.eliminarUsuario(id);
         res.json({
-            msg
+            msg: req.t('usuario.usuario_eliminado_exito')
         })
 
 

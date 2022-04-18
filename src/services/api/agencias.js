@@ -55,8 +55,8 @@ const totalAgencias = async() => {
 const actualizarAgencia = async(data, id) => {
 
     try {
-        await Agencia.update(data, { where: { id } })
-        return 'Agencia actualizada';
+        return await Agencia.update(data, { where: { id } });
+
 
     } catch (error) {
         console.log(error);
@@ -70,8 +70,8 @@ const actualizarAgencia = async(data, id) => {
 const eliminarAgencia = async(id) => {
 
     try {
-        await Agencia.destroy({ where: { id } });
-        return 'Agencia Eliminada'
+        return await Agencia.destroy({ where: { id } });
+
 
     } catch (error) {
         console.log(error);

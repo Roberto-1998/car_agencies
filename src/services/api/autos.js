@@ -97,8 +97,8 @@ const crearAuto = async(data) => {
 const actualizarAuto = async(data, id) => {
 
     try {
-        await Auto.update(data, { where: { id } })
-        return 'Auto actualizado';
+        return await Auto.update(data, { where: { id } })
+
 
     } catch (error) {
         console.log(error);
@@ -112,8 +112,8 @@ const actualizarAuto = async(data, id) => {
 const eliminarAuto = async(id) => {
 
     try {
-        await Auto.destroy({ where: { id } });
-        return 'Auto Eliminado'
+        return await Auto.destroy({ where: { id } });
+
 
     } catch (error) {
         console.log(error);
@@ -137,8 +137,8 @@ const uploadImage = async(id, imageName) => {
             }
         }
 
-        await Auto.update({ imagen: imageName }, { where: { id } });
-        return 'Imagen Actualizada'
+        return await Auto.update({ imagen: imageName }, { where: { id } });
+
 
     } catch (error) {
         console.log(error);

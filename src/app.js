@@ -8,13 +8,13 @@ const { v4: uuidv4 } = require('uuid');
 const createError = require('http-errors')
 const { port } = require('./config');
 const { sequelize } = require('./db/models');
-
+const i18next = require('i18next');
+const Backend = require('i18next-fs-backend');
+const i18nMiddleware = require('i18next-http-middleware');
 
 // Variables
 const app = express();
 const routes = require('./routes');
-
-
 
 
 // Middlewares
@@ -23,15 +23,27 @@ app.use(cors());
 app.use(express.json());
 app.use(morgan('dev'));
 app.use(helmet());
+app.use(i18nMiddleware.handle(i18next));
 
+// ---------------------i18next--------------------------------------
+
+i18next.use(Backend).use(i18nMiddleware.LanguageDetector)
+    .init({
+        fallbackLng: 'es',
+        backend: {
+            loadPath: path.join(__dirname, './locales/{{lng}}/translation.json')
+        }
+    })
+    // ---------------------i18next--------------------------------------
+
+// ---------------------MULTER---------------------------------------
 const storage = multer.diskStorage({
-
     destination: path.join(__dirname, '../public/uploads/images/autos'),
     filename: (req, file, cb) => {
         cb(null, uuidv4() + '-' + file.originalname);
     }
-
 })
+
 app.use(multer({
     storage,
     limits: {
@@ -47,10 +59,10 @@ app.use(multer({
         cb(createError(400, `Error debe ser una imagen valida - ${fileTypes}`));
     }
 }).single('imagen'));
+// ---------------------MULTER---------------------------------------
 
 
-
-// Routes
+// ROUTES
 app.use('/', routes);
 
 

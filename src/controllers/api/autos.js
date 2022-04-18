@@ -93,8 +93,10 @@ const uploadImage = async(req = request, res = response, next) => {
     console.log(req.file);
 
     try {
-        const msg = await _auto.uploadImage(id, req.file.filename);
-        res.json(msg)
+        await _auto.uploadImage(id, req.file.filename);
+        res.json({
+            msg: req.t('auto.imagen_subida_exito')
+        })
 
     } catch (e) {
         next(e);
@@ -109,9 +111,9 @@ const actualizarAuto = async(req = request, res = response, next) => {
     const { id: autoId } = req.params
 
     try {
-        const msg = await _auto.actualizarAuto(data, autoId);
+        await _auto.actualizarAuto(data, autoId);
         res.json({
-            msg
+            msg: req.t('auto.auto_actualizado_exito')
         })
 
     } catch (e) {
@@ -126,9 +128,9 @@ const borrarAuto = async(req = request, res = response, next) => {
 
     try {
 
-        const msg = await _auto.eliminarAuto(id);
+        await _auto.eliminarAuto(id);
         res.json({
-            msg
+            msg: req.t('auto.auto_eliminado_exito')
         })
 
     } catch (e) {

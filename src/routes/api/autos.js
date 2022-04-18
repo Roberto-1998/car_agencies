@@ -23,8 +23,8 @@ router.get('/search/:marca', [
 ], buscarAutos);
 
 router.post('/', [
-    validarJWT,
-    esAdminRol,
+    /*   validarJWT,
+      esAdminRol, */
     check('marca', 'La marca es requerida').notEmpty(),
     check('modelo', 'El modelo es requerido').notEmpty(),
     check('km', 'Los kilometros son requeridos').notEmpty(),
@@ -38,22 +38,23 @@ router.post('/', [
 ], crearAuto);
 
 router.put('/image/:id', [
-    validarJWT,
-    esAdminRol,
+    /* validarJWT,
+    esAdminRol, */
+    check('id').custom(existeAutoPorId),
     tieneImagen,
     validarCampos
 ], uploadImage);
 
 router.put('/:id', [
-    validarJWT,
-    esAdminRol,
+    /*  validarJWT,
+     esAdminRol, */
     check('id').custom(existeAutoPorId),
     validarCampos
 ], actualizarAuto)
 
 router.delete('/:id', [
-    validarJWT,
-    esAdminRol,
+    /*  validarJWT,
+     esAdminRol, */
     check('id').custom(existeAutoPorId),
     validarCampos
 ], borrarAuto)

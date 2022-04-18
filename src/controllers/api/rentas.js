@@ -42,9 +42,9 @@ const actualizarRenta = async(req = request, res = response, next) => {
     const { uuid: rentaUuid } = req.params
 
     try {
-        const msg = await _renta.actualizarRenta(data, rentaUuid);
+        await _renta.actualizarRenta(data, rentaUuid);
         res.json({
-            msg
+            msg: req.t('renta.renta_actualizada_exito')
         })
 
     } catch (e) {
@@ -59,9 +59,9 @@ const borrarRenta = async(req = request, res = response, next) => {
 
     try {
 
-        const msg = await _renta.eliminarRenta(uuid);
+        await _renta.eliminarRenta(uuid);
         res.json({
-            msg
+            msg: req.t('renta.renta_eliminada_exito')
         })
 
 

@@ -59,8 +59,8 @@ const crearUsuario = async(data) => {
 const actualizarUsuario = async(data, id) => {
 
     try {
-        await Usuario.update(data, { where: { id } })
-        return 'Usuario actualizado';
+        return await Usuario.update(data, { where: { id } })
+
 
     } catch (error) {
         console.log(error);
@@ -74,8 +74,8 @@ const actualizarUsuario = async(data, id) => {
 const eliminarUsuario = async(id) => {
 
     try {
-        await Usuario.destroy({ where: { id } });
-        return 'Usuario Eliminado'
+        return await Usuario.destroy({ where: { id } });
+
 
     } catch (error) {
         console.log(error);

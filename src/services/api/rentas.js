@@ -100,8 +100,8 @@ const crearRenta = async(data) => {
 const actualizarRenta = async(data, uuid) => {
 
     try {
-        await Renta.update(data, { where: { uuid } })
-        return 'Renta actualizada';
+        return await Renta.update(data, { where: { uuid } })
+
 
     } catch (error) {
         console.log(error);
@@ -115,8 +115,8 @@ const actualizarRenta = async(data, uuid) => {
 const eliminarRenta = async(uuid) => {
 
     try {
-        await Renta.destroy({ where: { uuid } });
-        return 'Renta Eliminada'
+        return await Renta.destroy({ where: { uuid } });
+
 
     } catch (error) {
         console.log(error);

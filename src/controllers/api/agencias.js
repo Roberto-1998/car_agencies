@@ -36,9 +36,9 @@ const actualizarAgencia = async(req = request, res = response, next) => {
     const { id: agenciaId } = req.params
 
     try {
-        const msg = await _agencia.actualizarAgencia(data, agenciaId);
+        await _agencia.actualizarAgencia(data, agenciaId);
         res.json({
-            msg
+            msg: req.t('agencia.agencia_actualizada_exito')
         })
 
     } catch (e) {
@@ -53,9 +53,9 @@ const borrarAgencia = async(req = request, res = response, next) => {
 
     try {
 
-        const msg = await _agencia.eliminarAgencia(id);
+        await _agencia.eliminarAgencia(id);
         res.json({
-            msg
+            msg: req.t('agencia.agencia_eliminada_exito')
         })
 
 

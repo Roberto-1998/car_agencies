@@ -1,0 +1,21 @@
+{
+
+    "agencia": {
+        "agencia_actualizada_exito": "Agencia actualizada",
+        "agencia_eliminada_exito": "Agencia eliminada"
+    },
+    "auto": {
+        "imagen_subida_exito": "Imagen subida",
+        "auto_actualizado_exito": "Auto actualizado",
+        "auto_eliminado_exito": "Auto eliminado"
+    },
+    "usuario": {
+        "usuario_actualizado_exito": "Usuario actualizado",
+        "usuario_eliminado_exito": "Usuario eliminado"
+    },
+    "renta": {
+        "renta_actualizada_exito": "Renta actualizada",
+        "renta_eliminada_exito": "Renta eliminada"
+    }
+
+}

@@ -12,8 +12,8 @@ router.get('/', [
 ], obtenerAgencias)
 
 router.post('/', [
-    validarJWT,
-    esAdminRol,
+    /*  validarJWT,
+     esAdminRol, */
     check('nombre', 'El nombre de la agencia es requerido').notEmpty(),
     check('telefono', 'El telefono de la agencia es requerido').notEmpty(),
     check('direccion', 'La direccion de la agencia es requerido').notEmpty(),
@@ -21,15 +21,15 @@ router.post('/', [
 ], crearAgencia)
 
 router.put('/:id', [
-    validarJWT,
-    esAdminRol,
+    /*  validarJWT,
+     esAdminRol, */
     check('id').custom(existeAgenciaPorId),
     validarCampos
 ], actualizarAgencia)
 
 router.delete('/:id', [
-    validarJWT,
-    esAdminRol,
+    /*   validarJWT,
+      esAdminRol, */
     check('id').custom(existeAgenciaPorId),
     validarCampos
 ], borrarAgencia)
