@@ -51,20 +51,20 @@
         "rol_buscarPorNombre_error": "Error searching role by name"
     },
     "middleware": {
-        "validar_renta_usuario_error": "The user ${usuarioId} has already been assigned a rental for the car ${autoId}",
+        "validar_renta_usuario_error": "The user has already been assigned a rental for this car",
         "tieneImagen_error": "No image to upload",
         "esAdminRol_error": "Unauthorized user",
         "validarJWT_noToken_error": "The token is required - user must be logged in",
         "validarJWT_tokenIncorrecto_error": "The token is incorrect"
     },
     "helper": {
-        "existeAgenciaPorId_error": "There is no agency for the id ${id}",
-        "existeAutoPorId_error": "There is no car for the id ${id}",
-        "existeUsuarioPorId_error": "There is no user for the id ${id}",
-        "existeUsuarioPorCorreo_error": "The email ${correo} is already registered",
-        "existeRolPorNombre_error": "There is no role type - ${nombre}",
-        "existeRentaPorUuid_error": "There is no rent for the uuid ${uuid}",
-        "verificarAutoDisponible_error": "The auto with id ${autoId} is not available",
+        "existeAgenciaPorId_error": "There is no agency for the id",
+        "existeAutoPorId_error": "There is no car for the id",
+        "existeUsuarioPorId_error": "There is no user for the id",
+        "existeUsuarioPorCorreo_error": "The email is already registered",
+        "existeRolPorNombre_error": "There is no role with that type ",
+        "existeRentaPorUuid_error": "There is no rent for the uuid",
+        "verificarAutoDisponible_error": "The auto with this id is not available",
         "generarJWT_error": "Failed to generate token",
         "login_error_400": "User-password error",
         "login_error_500": "Login failed"
@@ -101,7 +101,7 @@
     },
     "some_errors": {
         "multer": {
-            "imagen_extension_error": "Error must be a valid image - ${fileTypes}"
+            "imagen_extension_error": "Error must be a valid image"
         },
         "not_found_page": "Page not found"
 

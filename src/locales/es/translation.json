@@ -51,20 +51,20 @@
         "rol_buscarPorNombre_error": "Error al buscar Rol por nombre"
     },
     "middleware": {
-        "validar_renta_auto_usuario_error": "El usuario ${usuarioId} ya tiene asignada una renta para el auto ${autoId}",
+        "validar_renta_auto_usuario_error": "El usuario ya tiene asignada una renta para este auto ",
         "tieneImagen_error": "No hay imagen para subir",
         "esAdminRol_error": "Usuario no autorizado",
         "validarJWT_noToken_error": "El token es requerido - usuario debe estar logueado",
         "validarJWT_tokenIncorrecto_error": "El token es incorrecto"
     },
     "helper": {
-        "existeAgenciaPorId_error": "No existe una agencia para el id ${id}",
-        "existeAutoPorId_error": "No existe un auto para el id ${id}",
-        "existeUsuarioPorId_error": "No existe un usuario para el id ${id}",
-        "existeUsuarioPorCorreo_error": "El correo ${correo} ya se encuentra registrado",
-        "existeRolPorNombre_error": "No existe un rol tipo - ${nombre}",
-        "existeRentaPorUuid_error": "No existe una renta para el uuid ${uuid}",
-        "verificarAutoDisponible_error": "El auto con id ${autoId} no esta disponible",
+        "existeAgenciaPorId_error": "No existe una agencia para el id",
+        "existeAutoPorId_error": "No existe un auto para el id",
+        "existeUsuarioPorId_error": "No existe un usuario para el id",
+        "existeUsuarioPorCorreo_error": "El correo ya se encuentra registrado",
+        "existeRolPorNombre_error": "No existe un rol tipo",
+        "existeRentaPorUuid_error": "No existe una renta para el uuid",
+        "verificarAutoDisponible_error": "El auto con id no esta disponible",
         "generarJWT_error": "No se pudo generar el token",
         "login_error_400": "Error usuario-password",
         "login_error_500": "Error al realizar el login"
@@ -101,7 +101,7 @@
     },
     "some_errors": {
         "multer": {
-            "imagen_extension_error": "Error debe ser una imagen valida - ${fileTypes}"
+            "imagen_extension_error": "Error debe ser una imagen valida"
         },
         "not_found_page": "Pagina no encontrada"
 
