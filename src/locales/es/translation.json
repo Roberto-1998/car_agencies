@@ -97,6 +97,10 @@
             "check_autoId_requerido": "El auto rentado es requerido",
             "check_fechaInicio_requerida": "La fecha inicial del alquiler es requerida",
             "check_fechaFinal_requerida": "La fecha final del alquiler es requerida"
+        },
+        "auth": {
+            "google_signin_error": "El id_token es requerido",
+            "google_token_error": "Token de Google no es valido"
         }
     },
     "some_errors": {

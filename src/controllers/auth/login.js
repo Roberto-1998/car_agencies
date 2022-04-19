@@ -2,7 +2,7 @@ const { request, response } = require("express");
 const createError = require('http-errors');
 const bcrypt = require('bcryptjs');
 const _usuario = require('../../services');
-const { generarJWT } = require("../../helpers/auth/auth");
+const { generarJWT } = require("../../helpers");
 
 const login = async(req = request, res = response, next) => {
 

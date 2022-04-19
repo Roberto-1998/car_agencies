@@ -2,29 +2,34 @@ const router = require('express').Router();
 const { check } = require('express-validator');
 const { validarCampos, esAdminRol, nodeCache, tieneImagen } = require('../../middlewares')
 const { obtenerAutos, crearAuto, borrarAuto, actualizarAuto, obtenerAutoPorId, buscarAutos, uploadImage } = require('../../controllers');
-const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers/api/db-models-validators');
-const { validarJWT } = require('../../middlewares/validar-token');
+const { existeAutoPorId, existeAgenciaPorId } = require('../../helpers');
+const { validarJWT } = require('../../middlewares');
 
 
 
 
 router.get('/', [
-    nodeCache(5)
+    validarJWT,
+    nodeCache(5),
+    validarCampos,
 ], obtenerAutos)
 
 router.get('/:id', [
+    validarJWT,
     check('id').custom(existeAutoPorId),
     validarCampos,
     nodeCache(5)
 ], obtenerAutoPorId)
 
 router.get('/search/:marca', [
-    nodeCache(5)
+    validarJWT,
+    nodeCache(5),
+    validarCampos,
 ], buscarAutos);
 
 router.post('/', [
-    /*   validarJWT,
-      esAdminRol, */
+    validarJWT,
+    esAdminRol,
     check('marca', 'routes.auto.check_marca_requerida').notEmpty(),
     check('modelo', 'routes.auto.check_modelo_requerido').notEmpty(),
     check('km', 'routes.auto.check_km_requeridos').notEmpty(),
@@ -38,23 +43,23 @@ router.post('/', [
 ], crearAuto);
 
 router.put('/image/:id', [
-    /* validarJWT,
-    esAdminRol, */
+    validarJWT,
+    esAdminRol,
     tieneImagen,
     check('id').custom(existeAutoPorId),
     validarCampos
 ], uploadImage);
 
 router.put('/:id', [
-    /*  validarJWT,
-     esAdminRol, */
+    validarJWT,
+    esAdminRol,
     check('id').custom(existeAutoPorId),
     validarCampos
 ], actualizarAuto)
 
 router.delete('/:id', [
-    /*  validarJWT,
-     esAdminRol, */
+    validarJWT,
+    esAdminRol,
     check('id').custom(existeAutoPorId),
     validarCampos
 ], borrarAuto)

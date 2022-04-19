@@ -46,17 +46,22 @@ module.exports = (sequelize, DataTypes) => {
         },
         edad: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: true
         },
         telefono: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         },
         rol: {
             type: DataTypes.STRING,
             allowNull: false,
             defaultValue: 'user_rol'
         },
+        google: {
+            type: DataTypes.BOOLEAN,
+            defaultValue: false,
+            allowNull: false
+        }
     }, {
         tableName: 'usuarios',
         sequelize,

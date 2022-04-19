@@ -97,6 +97,10 @@
             "check_autoId_requerido": "The rented car is required",
             "check_fechaInicio_requerida": "The initial date of the rental is required",
             "check_fechaFinal_requerida": "The end date of the rental is required"
+        },
+        "auth": {
+            "google_signin_error": "The id_token is required",
+            "google_token_error": "Google token is not valid"
         }
     },
     "some_errors": {

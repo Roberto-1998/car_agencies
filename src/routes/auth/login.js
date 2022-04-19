@@ -1,5 +1,5 @@
 const { check } = require('express-validator');
-const { login } = require('../../controllers/auth/login');
+const { login } = require('../../controllers');
 const { validarCampos } = require('../../middlewares');
 
 

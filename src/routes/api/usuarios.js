@@ -1,17 +1,19 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
 const { obtenerUsuarios, crearUsuario, borrarUsuario, actualizarUsuario } = require('../../controllers');
-const { existeUsuarioPorId, existeUsuarioPorCorreo, existe, existeRolPorNombre } = require('../../helpers/api/db-models-validators');
+const { existeUsuarioPorId, existeUsuarioPorCorreo, existe, existeRolPorNombre } = require('../../helpers');
 const { esAdminRol, nodeCache } = require('../../middlewares');
-const { validarCampos } = require('../../middlewares/validar-campos');
-const { validarJWT } = require('../../middlewares/validar-token');
+const { validarCampos } = require('../../middlewares');
+const { validarJWT } = require('../../middlewares');
 
 
 router.get('/', [
+
     nodeCache(5)
 ], obtenerUsuarios)
 
 router.post('/', [
+
 
     check('nombre', 'routes.usuario.check_nombre_requerido').notEmpty(),
     check('apellidos', 'routes.usuario.check_apellidos_requeridos').notEmpty(),

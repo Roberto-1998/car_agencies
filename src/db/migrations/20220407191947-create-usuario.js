@@ -26,16 +26,21 @@ module.exports = {
             },
             edad: {
                 type: Sequelize.INTEGER,
-                allowNull: false
+                allowNull: true
             },
             telefono: {
                 type: Sequelize.STRING,
-                allowNull: false
+                allowNull: true
             },
             rol: {
                 type: Sequelize.STRING,
                 allowNull: false,
                 defaultValue: 'user_rol'
+            },
+            google: {
+                type: Sequelize.BOOLEAN,
+                defaultValue: false,
+                allowNull: false
             },
             createdAt: {
                 allowNull: false,

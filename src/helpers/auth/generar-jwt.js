@@ -19,8 +19,6 @@ const generarJWT = (payload) => {
 }
 
 
-
-
 module.exports = {
     generarJWT,
 
