@@ -7,7 +7,7 @@ const obtenerAgencias = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener agencias');
+        throw Error('agencia.agencia_obtenerTodas_error');
     }
 }
 
@@ -18,7 +18,7 @@ const obtenerAgenciaPorId = async(id = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener agencia por id');
+        throw Error('agencia.agencia_obtenerPorId_error');
     }
 }
 
@@ -34,7 +34,7 @@ const crearAgencia = async(data) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al crear Agencia')
+        throw Error('agencia.agencia_crear_error')
     }
 }
 
@@ -46,7 +46,7 @@ const totalAgencias = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al contar agencias')
+        throw Error('agencia.agencia_contar_error')
 
     }
 
@@ -60,7 +60,7 @@ const actualizarAgencia = async(data, id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al actualizar Agencia');
+        throw Error('agencia.agencia_actualizar_error');
 
     }
 
@@ -75,7 +75,7 @@ const eliminarAgencia = async(id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al borrar Agencia')
+        throw Error('agencia.agencia_eliminar_error')
 
     }
 

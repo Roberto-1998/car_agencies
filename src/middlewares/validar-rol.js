@@ -11,7 +11,7 @@ const esAdminRol = async(req = request, res = response, next) => {
 
         const usuario = await _usuario.obtenerUsuarioPorId(usuarioId);
         if (usuario.rol !== 'admin_rol') {
-            next(createError(400, "Usuario no autorizado"))
+            next(createError(400, req.t('middleware.esAdminRol_error')))
         }
         next();
 

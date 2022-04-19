@@ -7,7 +7,7 @@ const obtenerUsuarios = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuarios');
+        throw Error('usuario.usuario_obtenerTodos_error');
     }
 }
 
@@ -18,7 +18,7 @@ const obtenerUsuarioPorId = async(id = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuario por id');
+        throw Error('usuario.usuario_obtenerPorId_error');
     }
 }
 
@@ -29,7 +29,7 @@ const obtenerUsuarioPorCorreo = async(correo = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuario por correo');
+        throw Error('usuario.usuario_obtenerPorCorreo_error');
     }
 }
 
@@ -39,7 +39,7 @@ const totalUsuarios = async() => {
         return total;
     } catch (error) {
         console.log(error);
-        throw Error('Error al contar usuarios');
+        throw Error('usuario.usuario_contar_error');
     }
 
 }
@@ -52,7 +52,7 @@ const crearUsuario = async(data) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al crear Usuario')
+        throw Error('usuario.usuario_crear_error')
     }
 }
 
@@ -64,7 +64,7 @@ const actualizarUsuario = async(data, id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al actualizar Usuario');
+        throw Error('usuario.usuario_actualizar_error');
 
     }
 
@@ -79,7 +79,7 @@ const eliminarUsuario = async(id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al borrar Usuario')
+        throw Error('usuario.usuario_eliminar_error')
 
     }
 

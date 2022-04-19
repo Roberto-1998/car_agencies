@@ -13,26 +13,30 @@ const login = async(req = request, res = response, next) => {
         if (usuario) {
             const iguales = bcrypt.compareSync(password, usuario.password);
             if (iguales) {
-                // Generar JWT
-                const payload = { usuarioId: usuario.id }
-                const token = await generarJWT(payload);
+                try {
+                    // Generar JWT
+                    const payload = { usuarioId: usuario.id }
+                    const token = await generarJWT(payload);
 
-                res.json({
-                    token
-                })
+                    res.json({
+                        token
+                    })
 
+                } catch (e) {
+                    next(e)
+                }
 
             } else {
-                return next(createError(400, "Error usuario-password"))
+                return next(createError(400, "helper.login_error_400"))
             }
 
         } else {
-            next(createError(400, "Error usuario-password"))
+            next(createError(400, "helper.login_error_400"))
         }
 
     } catch (error) {
         console.log(error);
-        next(createError(500, "Error al realizar el Login"))
+        next(createError(500, 'helper.login_error_500'))
 
     }
 

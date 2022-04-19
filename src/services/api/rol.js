@@ -10,7 +10,7 @@ const buscarRolPorNombre = async(nombre) => {
 
     } catch (error) {
         console.log(error);
-        throw Error("Error al buscar Rol por nombre")
+        throw Error("rol.rol_buscarPorNombre_error")
     }
 
 

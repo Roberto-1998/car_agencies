@@ -28,7 +28,7 @@ const obtenerRentas = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener rentas');
+        throw Error('renta.renta_obtenerTodas_error');
     }
 }
 
@@ -39,7 +39,7 @@ const obtenerRentaPorUuid = async(uuid = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener renta por uuid');
+        throw Error('renta.renta_obtenerPorUuidd_error');
     }
 }
 
@@ -52,7 +52,7 @@ const verificarUnicaRenta = async(usuarioId = '', autoId = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al verificar unica renta');
+        throw Error('renta.renta_verificarUnica_error');
 
     }
 
@@ -64,7 +64,7 @@ const totalRentas = async() => {
         return total;
     } catch (error) {
         console.log(error);
-        throw Error('Error al contar rentas');
+        throw Error('renta.renta_contar_error');
     }
 
 }
@@ -93,7 +93,7 @@ const crearRenta = async(data) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al crear Renta')
+        throw Error('renta.renta_crear_error')
     }
 }
 
@@ -105,7 +105,7 @@ const actualizarRenta = async(data, uuid) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al actualizar Renta');
+        throw Error('renta.renta_actualizar_error');
 
     }
 
@@ -120,7 +120,7 @@ const eliminarRenta = async(uuid) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al borrar Renta')
+        throw Error('renta.renta_eliminar_error')
 
     }
 

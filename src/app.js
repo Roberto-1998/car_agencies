@@ -56,7 +56,7 @@ app.use(multer({
         if (mimetype && extname) {
             return cb(null, true)
         }
-        cb(createError(400, `Error debe ser una imagen valida - ${fileTypes}`));
+        cb(createError(400, 'some_errors.multer.imagen_extension_error'));
     }
 }).single('imagen'));
 // ---------------------MULTER---------------------------------------
@@ -72,7 +72,7 @@ app.use((req, res, next) => {
     // const error = new Error('Not found');
     // error.status = 404;
     // next(error);
-    next(createError(404, "Not found"))
+    next(createError(404, "some_errors.not_found_page"))
 })
 
 
@@ -82,7 +82,7 @@ app.use((err, req, res, next) => {
     res.json({
         error: {
             status: err.status || 500,
-            message: err.message
+            message: req.t(err.message)
         }
     })
 })

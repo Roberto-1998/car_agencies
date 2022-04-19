@@ -1,5 +1,111 @@
 {
 
-    "agencia_actualizada_exito": "Agencia actualizada"
+    "agencia": {
+        "agencia_actualizada_exito": "Updated agency",
+        "agencia_eliminada_exito": "Agency removed",
+        "agencia_eliminar_error": "Error deleting agency",
+        "agencia_actualizar_error": "Error updating agency",
+        "agencia_crear_error": "Error creating Agency",
+        "agencia_obtenerPorId_error": "Error getting agency by id",
+        "agencia_contar_error": "Error counting agencies",
+        "agencia_obtenerTodas_error": "Error getting agencies"
+
+    },
+    "auto": {
+        "imagen_subida_exito": "Uploaded image",
+        "auto_actualizado_exito": "Updated auto",
+        "auto_eliminado_exito": "Auto Deleted",
+        "auto_obtenerTodos_error": "Error getting cars",
+        "auto_obtenerPorId_error": "Error getting auto by id",
+        "auto_contar_error": "Error counting cars",
+        "auto_buscarPorMarca_error": "Error searching for cars by brand",
+        "auto_crear_error": "Error creating auto",
+        "auto_actualizar_error": "Error updating auto",
+        "auto_eliminar_error": "Error deleting auto",
+        "auto_actualizarImagen_error": "Error updating image"
+    },
+    "usuario": {
+        "usuario_actualizado_exito": "Updated user",
+        "usuario_eliminado_exito": "Deleted user",
+        "usuario_obtenerTodos_error": "Error getting users",
+        "usuario_obtenerPorId_error": "Error getting user by id",
+        "usuario_obtenerPorCorreo_error": "Error getting user by email",
+        "usuario_contar_error": "Error counting users",
+        "usuario_crear_error": "Error creating user",
+        "usuario_actualizar_error": "Error updating user",
+        "usuario_eliminar_error": "Error deleting user"
+    },
+    "renta": {
+        "renta_actualizada_exito": "Updated rent",
+        "renta_eliminada_exito": "Rent removed",
+        "renta_eliminar_error": "Error deleting rent",
+        "renta_actualizar_error": "Error updating rent",
+        "renta_crear_error": "Error creating renta",
+        "renta_contar_error": "Error counting rents",
+        "renta_verificarUnica_error": "Error verifying unique rent",
+        "renta_obtenerPorUuidd_error": "Error getting rent by uuid",
+        "renta_obtenerTodas_error": "Error in obtaining rents"
+
+    },
+    "rol": {
+        "rol_buscarPorNombre_error": "Error searching role by name"
+    },
+    "middleware": {
+        "validar_renta_usuario_error": "The user ${usuarioId} has already been assigned a rental for the car ${autoId}",
+        "tieneImagen_error": "No image to upload",
+        "esAdminRol_error": "Unauthorized user",
+        "validarJWT_noToken_error": "The token is required - user must be logged in",
+        "validarJWT_tokenIncorrecto_error": "The token is incorrect"
+    },
+    "helper": {
+        "existeAgenciaPorId_error": "There is no agency for the id ${id}",
+        "existeAutoPorId_error": "There is no car for the id ${id}",
+        "existeUsuarioPorId_error": "There is no user for the id ${id}",
+        "existeUsuarioPorCorreo_error": "The email ${correo} is already registered",
+        "existeRolPorNombre_error": "There is no role type - ${nombre}",
+        "existeRentaPorUuid_error": "There is no rent for the uuid ${uuid}",
+        "verificarAutoDisponible_error": "The auto with id ${autoId} is not available",
+        "generarJWT_error": "Failed to generate token",
+        "login_error_400": "User-password error",
+        "login_error_500": "Login failed"
+    },
+    "routes": {
+        "agencia": {
+            "check_nombre_requerido": "The name of the agency is required",
+            "check_direccion_requerida": "Agency address is required",
+            "check_telefono_requerido": "The agency phone is required"
+        },
+        "auto": {
+            "check_marca_requerida": "The brand is required",
+            "check_modelo_requerido": "The model is required",
+            "check_km_requeridos": "Kilometers are required",
+            "check_plazas_requeridas": "The data of seats is required",
+            "check_combustible_requerido": "The type of fuel is required",
+            "check_precio_requerido": "Rental price is required",
+            "check_year_requerido": "The year of the car is required",
+            "check_agenciaId_requerida": "The agency to which the car belongs is required"
+        },
+        "usuario": {
+            "check_nombre_requerido": "Name is required",
+            "check_apellidos_requeridos": "Surnames are required",
+            "check_correo_requerido": "Email is required",
+            "check_password_requerido": "Password is required",
+            "check_edad_requerido": "Age is required",
+            "check_telefono_requerido": "Phone is required"
+        },
+        "renta": {
+            "check_autoId_requerido": "The rented car is required",
+            "check_fechaInicio_requerida": "The initial date of the rental is required",
+            "check_fechaFinal_requerida": "The end date of the rental is required"
+        }
+    },
+    "some_errors": {
+        "multer": {
+            "imagen_extension_error": "Error must be a valid image - ${fileTypes}"
+        },
+        "not_found_page": "Page not found"
+
+    }
+
 
 }

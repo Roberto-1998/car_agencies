@@ -13,13 +13,13 @@ router.get('/', [
 
 router.post('/', [
 
-    check('nombre', 'El nombre es requerido').notEmpty(),
-    check('apellidos', 'Los apellidos son requeridos').notEmpty(),
-    check('correo', 'El correo es requerido').notEmpty(),
+    check('nombre', 'routes.usuario.check_nombre_requerido').notEmpty(),
+    check('apellidos', 'routes.usuario.check_apellidos_requeridos').notEmpty(),
+    check('correo', 'routes.usuario.check_correo_requerido').notEmpty(),
     check('correo').custom(existeUsuarioPorCorreo),
-    check('password', 'El password es requerido').notEmpty(),
-    check('telefono', 'El telefono es requerido').notEmpty(),
-    check('edad', 'La edad es requerida').notEmpty(),
+    check('password', 'routes.usuario.check_password_requerido').notEmpty(),
+    check('telefono', 'routes.usuario.check_telefono_requerido').notEmpty(),
+    check('edad', 'routes.usuario.check_edad_requerido').notEmpty(),
     check('rol').custom(existeRolPorNombre),
     validarCampos
 ], crearUsuario)

@@ -25,14 +25,14 @@ router.get('/search/:marca', [
 router.post('/', [
     /*   validarJWT,
       esAdminRol, */
-    check('marca', 'La marca es requerida').notEmpty(),
-    check('modelo', 'El modelo es requerido').notEmpty(),
-    check('km', 'Los kilometros son requeridos').notEmpty(),
-    check('plazas', 'El dato de plazas es requerido').notEmpty(),
-    check('combustible', 'El tipo de combustible es requerido').notEmpty(),
-    check('precio', 'El precio de alquiler es requerido').notEmpty(),
-    check('year', 'El año del auto es requerido').notEmpty(),
-    check('agenciaId', 'La agencia a la que pertenece el auto es requerida').notEmpty(),
+    check('marca', 'routes.auto.check_marca_requerida').notEmpty(),
+    check('modelo', 'routes.auto.check_modelo_requerido').notEmpty(),
+    check('km', 'routes.auto.check_km_requeridos').notEmpty(),
+    check('plazas', 'routes.auto.check_plazas_requeridas').notEmpty(),
+    check('combustible', 'routes.auto.check_combustible_requerido').notEmpty(),
+    check('precio', 'routes.auto.check_precio_requerido').notEmpty(),
+    check('year', 'routes.auto.check_year_requerido').notEmpty(),
+    check('agenciaId', 'routes.auto.check_agenciaId_requerida').notEmpty(),
     check('agenciaId').custom(existeAgenciaPorId),
     validarCampos
 ], crearAuto);
@@ -40,8 +40,8 @@ router.post('/', [
 router.put('/image/:id', [
     /* validarJWT,
     esAdminRol, */
-    check('id').custom(existeAutoPorId),
     tieneImagen,
+    check('id').custom(existeAutoPorId),
     validarCampos
 ], uploadImage);
 

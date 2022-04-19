@@ -22,7 +22,7 @@ const obtenerAutos = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener usuarios');
+        throw Error('auto.auto_obtenerTodos_error');
     }
 }
 
@@ -39,7 +39,7 @@ const obtenerAutoPorId = async(id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al obtener Auto por Id');
+        throw Error('auto.auto_obtenerPorId_error');
     }
 }
 
@@ -51,7 +51,7 @@ const totalAutos = async() => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al contar autos')
+        throw Error('auto.auto_contar_error')
 
     }
 
@@ -72,7 +72,7 @@ const buscarAutos = async(marca = '') => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al buscar los autos por el nombre')
+        throw Error('auto.auto_buscarPorMarca_error')
 
     }
 
@@ -90,7 +90,7 @@ const crearAuto = async(data) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al crear Auto')
+        throw Error('auto.auto_crear_error')
     }
 }
 
@@ -102,7 +102,7 @@ const actualizarAuto = async(data, id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al actualizar Auto');
+        throw Error('auto.auto_actualizar_error');
 
     }
 
@@ -117,7 +117,7 @@ const eliminarAuto = async(id) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al borrar Auto')
+        throw Error('auto.auto_eliminar_error')
 
     }
 
@@ -142,7 +142,7 @@ const uploadImage = async(id, imageName) => {
 
     } catch (error) {
         console.log(error);
-        throw Error('Error al actualizar imagen')
+        throw Error('auto.auto_actualizarImagen_error')
 
     }
 

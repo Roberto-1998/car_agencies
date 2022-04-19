@@ -2,20 +2,109 @@
 
     "agencia": {
         "agencia_actualizada_exito": "Agencia actualizada",
-        "agencia_eliminada_exito": "Agencia eliminada"
+        "agencia_eliminada_exito": "Agencia eliminada",
+        "agencia_eliminar_error": "Error al eliminar agencia",
+        "agencia_actualizar_error": "Error al actualizar agencia",
+        "agencia_crear_error": "Error al crear Agencia",
+        "agencia_obtenerPorId_error": "Error al obtener agencia por id",
+        "agencia_contar_error": "Error al contar agencias",
+        "agencia_obtenerTodas_error": "Error al obtener agencias"
+
     },
     "auto": {
         "imagen_subida_exito": "Imagen subida",
         "auto_actualizado_exito": "Auto actualizado",
-        "auto_eliminado_exito": "Auto eliminado"
+        "auto_eliminado_exito": "Auto eliminado",
+        "auto_obtenerTodos_error": "Error al obtener autos",
+        "auto_obtenerPorId_error": "Error al obtener auto por id",
+        "auto_contar_error": "Error al contar autos",
+        "auto_buscarPorMarca_error": "Error al buscar autos por la marca",
+        "auto_crear_error": "Error al crear auto",
+        "auto_actualizar_error": "Error al actualizar auto",
+        "auto_eliminar_error": "Error al eliminar auto",
+        "auto_actualizarImagen_error": "Error al actualizar imagen"
     },
     "usuario": {
         "usuario_actualizado_exito": "Usuario actualizado",
-        "usuario_eliminado_exito": "Usuario eliminado"
+        "usuario_eliminado_exito": "Usuario eliminado",
+        "usuario_obtenerTodos_error": "Error al obtener usuarios",
+        "usuario_obtenerPorId_error": "Error al obtener usuario por id",
+        "usuario_obtenerPorCorreo_error": "Error al obtener usuario por correo",
+        "usuario_contar_error": "Error al contar usuarios",
+        "usuario_crear_error": "Error al crear usuario",
+        "usuario_actualizar_error": "Error al actualizar usuario",
+        "usuario_eliminar_error": "Error al eliminar usuario"
     },
     "renta": {
         "renta_actualizada_exito": "Renta actualizada",
-        "renta_eliminada_exito": "Renta eliminada"
+        "renta_eliminada_exito": "Renta eliminada",
+        "renta_eliminar_error": "Error al eliminar renta",
+        "renta_actualizar_error": "Error al actualizar renta",
+        "renta_crear_eresror": "Error al crear renta",
+        "renta_contar_error": "Error al contar rentas",
+        "renta_verificarUnica_error": "Error al verificar unica renta",
+        "renta_obtenerPorUuidd_error": "Error al obtener renta por uuid",
+        "renta_obtenerTodas_error": "Error al obtener rentas"
+
+    },
+    "rol": {
+        "rol_buscarPorNombre_error": "Error al buscar Rol por nombre"
+    },
+    "middleware": {
+        "validar_renta_auto_usuario_error": "El usuario ${usuarioId} ya tiene asignada una renta para el auto ${autoId}",
+        "tieneImagen_error": "No hay imagen para subir",
+        "esAdminRol_error": "Usuario no autorizado",
+        "validarJWT_noToken_error": "El token es requerido - usuario debe estar logueado",
+        "validarJWT_tokenIncorrecto_error": "El token es incorrecto"
+    },
+    "helper": {
+        "existeAgenciaPorId_error": "No existe una agencia para el id ${id}",
+        "existeAutoPorId_error": "No existe un auto para el id ${id}",
+        "existeUsuarioPorId_error": "No existe un usuario para el id ${id}",
+        "existeUsuarioPorCorreo_error": "El correo ${correo} ya se encuentra registrado",
+        "existeRolPorNombre_error": "No existe un rol tipo - ${nombre}",
+        "existeRentaPorUuid_error": "No existe una renta para el uuid ${uuid}",
+        "verificarAutoDisponible_error": "El auto con id ${autoId} no esta disponible",
+        "generarJWT_error": "No se pudo generar el token",
+        "login_error_400": "Error usuario-password",
+        "login_error_500": "Error al realizar el login"
+    },
+    "routes": {
+        "agencia": {
+            "check_nombre_requerido": "El nombre de la agencia es requerido",
+            "check_direccion_requerida": "La direccion de la agencia es requerida",
+            "check_telefono_requerido": "El telefono de la agencia es requerido"
+        },
+        "auto": {
+            "check_marca_requerida": "La marca es requerida",
+            "check_modelo_requerido": "El modelo es requerido",
+            "check_km_requeridos": "Los kilometros son requeridos",
+            "check_plazas_requeridas": "El dato de plazas es requerido",
+            "check_combustible_requerido": "El tipo de combustible es requerido",
+            "check_precio_requerido": "El precio de alquiler es requerido",
+            "check_year_requerido": "El año del auto es requerido",
+            "check_agenciaId_requerida": "La agencia a la que pertenece el auto es requerida"
+        },
+        "usuario": {
+            "check_nombre_requerido": "El nombre es requerido",
+            "check_apellidos_requeridos": "Los apellidos son requeridos",
+            "check_correo_requerido": "El correo es requerido",
+            "check_password_requerido": "El password es requerido",
+            "check_edad_requerido": "La edad es requerida",
+            "check_telefono_requerido": "El telefono es requerido"
+        },
+        "renta": {
+            "check_autoId_requerido": "El auto rentado es requerido",
+            "check_fechaInicio_requerida": "La fecha inicial del alquiler es requerida",
+            "check_fechaFinal_requerida": "La fecha final del alquiler es requerida"
+        }
+    },
+    "some_errors": {
+        "multer": {
+            "imagen_extension_error": "Error debe ser una imagen valida - ${fileTypes}"
+        },
+        "not_found_page": "Pagina no encontrada"
+
     }
 
 }

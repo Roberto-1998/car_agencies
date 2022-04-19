@@ -14,9 +14,9 @@ router.get('/', [
 router.post('/', [
     /*  validarJWT,
      esAdminRol, */
-    check('nombre', 'El nombre de la agencia es requerido').notEmpty(),
-    check('telefono', 'El telefono de la agencia es requerido').notEmpty(),
-    check('direccion', 'La direccion de la agencia es requerido').notEmpty(),
+    check('nombre', 'routes.agencia.check_nombre_requerido').notEmpty(),
+    check('telefono', 'routes.agencia.check_telefono_requerido').notEmpty(),
+    check('direccion', 'routes.agencia.check_direccion_requerida').notEmpty(),
     validarCampos
 ], crearAgencia)
 

@@ -10,7 +10,7 @@ const validarRentaAutoUsuario = async(req, res, next) => {
     try {
         const renta = await _renta.verificarUnicaRenta(usuarioId, autoId);
         if (renta) {
-            next(createError(400, `El usuario ${usuarioId} ya tiene asignada una renta para el auto ${autoId}`))
+            next(createError(400, req.t('middleware.validar_renta_auto_usuario_error')))
         }
         next();
 
@@ -23,7 +23,7 @@ const validarRentaAutoUsuario = async(req, res, next) => {
 const tieneImagen = (req = request, res = response, next) => {
 
     if (!req.file) {
-        return next(createError(400, "No hay imagen para subir"))
+        return next(createError(400, "middleware.tieneImagen_error"))
     }
 
     next();

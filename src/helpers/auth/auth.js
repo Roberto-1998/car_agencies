@@ -9,7 +9,7 @@ const generarJWT = (payload) => {
         jwt.sign(payload, secretKey, { expiresIn: '1h' }, (err, token) => {
             if (err) {
                 console.log(err);
-                reject("No se pudo generar el token")
+                reject('helper.generarJWT_error')
             } else(
                 resolve(token)
             )

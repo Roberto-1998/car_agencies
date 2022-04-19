@@ -14,12 +14,12 @@ router.get('/', [
 router.post('/', [
     validarJWT,
     esAdminRol,
-    check('autoId', 'El auto rentado es requerido').notEmpty(),
+    check('autoId', 'routes.renta.check_autoId_requerido').notEmpty(),
     check('autoId').custom(existeAutoPorId),
-    check('fechaInicio', 'La fecha inicial del alquiler es requerida').notEmpty(),
-    check('fechaFinal', 'La fecha final del alquiler es requerida').notEmpty(),
+    check('fechaInicio', 'routes.renta.check_fechaInicio_requerida').notEmpty(),
+    check('fechaFinal', 'routes.renta.check_fechaFinal_requerida').notEmpty(),
+    /*  validarRentaAutoUsuario, */
     check('autoId').custom(verificarAutoDisponible),
-    validarRentaAutoUsuario,
     validarCampos
 ], crearRenta)
 
