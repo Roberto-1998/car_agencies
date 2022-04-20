@@ -112,6 +112,15 @@ const actualizarAuto = async(data, id) => {
 const eliminarAuto = async(id) => {
 
     try {
+
+        const auto = await Auto.findByPk(id);
+        if (auto.imagen) {
+            const pathImage = path.join(__dirname, '../../../public/uploads/images/autos', auto.imagen)
+            if (fs.existsSync(pathImage)) {
+                fs.unlinkSync(pathImage);
+            }
+        }
+
         return await Auto.destroy({ where: { id } });
 
 
