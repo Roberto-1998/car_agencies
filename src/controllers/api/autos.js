@@ -10,14 +10,14 @@ const obtenerAutos = async(req = request, res = response, next) => {
             _auto.totalAutos(), _auto.obtenerAutos()
         ])
 
-        autos = autos.map((auto) => {
-            if (auto.imagen) {
-                auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
-            } else {
-                auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
-            }
-            return auto;
-        })
+        /*  autos = autos.map((auto) => {
+             if (auto.imagen) {
+                 auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+             } else {
+                 auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
+             }
+             return auto;
+         }) */
 
         res.json({
             total,
@@ -34,12 +34,12 @@ const obtenerAutoPorId = async(req = request, res = response, next) => {
     try {
         auto = await _auto.obtenerAutoPorId(id);
 
-        if (auto.imagen) {
+        /*   if (auto.imagen) {
             auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
         } else {
             auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
         }
-
+ */
         res.json(auto);
 
     } catch (e) {
@@ -57,7 +57,7 @@ const buscarAutos = async(req = request, res = response, next) => {
             _auto.totalAutos(), _auto.buscarAutos(marca)
         ])
 
-        autos = autos.map((auto) => {
+        /*  autos = autos.map((auto) => {
             if (auto.imagen) {
                 auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
             } else {
@@ -65,7 +65,7 @@ const buscarAutos = async(req = request, res = response, next) => {
             }
             return auto;
         })
-
+ */
         return res.json({
             total,
             autos
@@ -99,7 +99,7 @@ const uploadImage = async(req = request, res = response, next) => {
 
 
     try {
-        await _auto.uploadImage(id, req.file.filename);
+        await _auto.uploadImageCloudinary(id, req.file.path);
         res.json({
             msg: req.t('auto.imagen_subida_exito')
         })

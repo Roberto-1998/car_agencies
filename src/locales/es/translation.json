@@ -33,7 +33,8 @@
         "usuario_contar_error": "Error al contar usuarios",
         "usuario_crear_error": "Error al crear usuario",
         "usuario_actualizar_error": "Error al actualizar usuario",
-        "usuario_eliminar_error": "Error al eliminar usuario"
+        "usuario_eliminar_error": "Error al eliminar usuario",
+        "subir_imagen_cloudinary_error": "Error al subir imagen para Cloudinary"
     },
     "renta": {
         "renta_actualizada_exito": "Renta actualizada",

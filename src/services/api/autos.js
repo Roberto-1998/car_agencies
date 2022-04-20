@@ -1,6 +1,11 @@
 const { Op } = require('sequelize');
 const path = require('path');
 const fs = require('fs');
+const { cloudinaryUrl } = require('../../config');
+
+const cloudinary = require('cloudinary').v2
+    // Con esto nos autenticamos en Cloudinary
+cloudinary.config(cloudinaryUrl);
 
 const Auto = require('../../db/models').Auto;
 const Agencia = require('../../db/models').Agencia;
@@ -132,7 +137,7 @@ const eliminarAuto = async(id) => {
 
 }
 
-const uploadImage = async(id, imageName) => {
+/* const uploadImage = async(id, imageName) => {
 
     try {
         const auto = await Auto.findByPk(id);
@@ -157,6 +162,42 @@ const uploadImage = async(id, imageName) => {
 
 
 
+} */
+
+const uploadImageCloudinary = async(id, imagePath) => {
+
+    try {
+        const auto = await Auto.findByPk(id);
+
+        // Limpiar imágenes previas de Cloudinary
+        if (auto.imagen) {
+            const nombreArr = auto.imagen.split('/');
+            const nombre = nombreArr[nombreArr.length - 1];
+            const [public_id] = nombre.split('.');
+
+            cloudinary.uploader.destroy(public_id);
+
+        }
+
+
+
+        try {
+            const { secure_url } = await cloudinary.uploader.upload(imagePath);
+            return await Auto.update({ imagen: secure_url }, { where: { id } });
+
+        } catch (error) {
+            console.log(error);
+            throw Error('auto.subir_imagen_cloudinary_error')
+        }
+
+    } catch (error) {
+        console.log(error);
+        throw Error('auto.auto_actualizarImagen_error')
+
+    }
+
+
+
 }
 
 
@@ -167,6 +208,7 @@ module.exports = {
     actualizarAuto,
     eliminarAuto,
     obtenerAutoPorId,
-    uploadImage,
+    /*  uploadImage, */
+    uploadImageCloudinary,
     totalAutos
 }

@@ -22,7 +22,8 @@
         "auto_crear_error": "Error creating auto",
         "auto_actualizar_error": "Error updating auto",
         "auto_eliminar_error": "Error deleting auto",
-        "auto_actualizarImagen_error": "Error updating image"
+        "auto_actualizarImagen_error": "Error updating image",
+        "subir_imagen_cloudinary_error": "Error uploading image for Cloudinary"
     },
     "usuario": {
         "usuario_actualizado_exito": "Updated user",
