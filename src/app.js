@@ -38,7 +38,7 @@ i18next.use(Backend).use(i18nMiddleware.LanguageDetector)
 
 // ---------------------MULTER---------------------------------------
 const storage = multer.diskStorage({
-    destination: path.join(__dirname, '../public/uploads/images/autos'),
+    /*  destination: path.join(__dirname, '../public/uploads/images/autos'), */
     filename: (req, file, cb) => {
         cb(null, uuidv4() + '-' + file.originalname);
     }
