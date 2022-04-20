@@ -13,6 +13,8 @@ const obtenerAutos = async(req = request, res = response, next) => {
         autos = autos.map((auto) => {
             if (auto.imagen) {
                 auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            } else {
+                auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
             }
             return auto;
         })
@@ -34,6 +36,8 @@ const obtenerAutoPorId = async(req = request, res = response, next) => {
 
         if (auto.imagen) {
             auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+        } else {
+            auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
         }
 
         res.json(auto);
@@ -56,6 +60,8 @@ const buscarAutos = async(req = request, res = response, next) => {
         autos = autos.map((auto) => {
             if (auto.imagen) {
                 auto.imagen = `${req.protocol}://${req.headers.host}/uploads/images/autos/${auto.imagen}`
+            } else {
+                auto.imagen = `${req.protocol}://${req.headers.host}/images/no-image.jpg`
             }
             return auto;
         })
