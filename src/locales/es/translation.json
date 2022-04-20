@@ -88,8 +88,9 @@
         "usuario": {
             "check_nombre_requerido": "El nombre es requerido",
             "check_apellidos_requeridos": "Los apellidos son requeridos",
-            "check_correo_requerido": "El correo es requerido",
+            "check_correo_requerido": "Debe establecer un correo valido",
             "check_password_requerido": "El password es requerido",
+            "check_password_length": "La contraseña debe tener al menos 6 caracteres",
             "check_edad_requerido": "La edad es requerida",
             "check_telefono_requerido": "El telefono es requerido"
         },

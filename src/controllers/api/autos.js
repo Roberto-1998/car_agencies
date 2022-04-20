@@ -90,7 +90,7 @@ const uploadImage = async(req = request, res = response, next) => {
 
     const { id } = req.params;
 
-    console.log(req.file);
+
 
     try {
         await _auto.uploadImage(id, req.file.filename);

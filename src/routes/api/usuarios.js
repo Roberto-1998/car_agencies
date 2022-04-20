@@ -13,13 +13,12 @@ router.get('/', [
 ], obtenerUsuarios)
 
 router.post('/', [
-
-
     check('nombre', 'routes.usuario.check_nombre_requerido').notEmpty(),
     check('apellidos', 'routes.usuario.check_apellidos_requeridos').notEmpty(),
-    check('correo', 'routes.usuario.check_correo_requerido').notEmpty(),
+    check('correo', 'routes.usuario.check_correo_requerido').isEmail(),
     check('correo').custom(existeUsuarioPorCorreo),
     check('password', 'routes.usuario.check_password_requerido').notEmpty(),
+    check('password').isLength({ min: 6 }).withMessage('routes.usuario.check_password_length'),
     check('telefono', 'routes.usuario.check_telefono_requerido').notEmpty(),
     check('edad', 'routes.usuario.check_edad_requerido').notEmpty(),
     check('rol').custom(existeRolPorNombre),

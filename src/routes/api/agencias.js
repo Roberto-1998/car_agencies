@@ -8,7 +8,7 @@ const { validarCampos, esAdminRol, validarJWT, nodeCache } = require('../../midd
 
 
 router.get('/', [
-    esAdminRol,
+    validarJWT,
     nodeCache(5)
 ], obtenerAgencias)
 

@@ -88,8 +88,9 @@
         "usuario": {
             "check_nombre_requerido": "Name is required",
             "check_apellidos_requeridos": "Surnames are required",
-            "check_correo_requerido": "Email is required",
+            "check_correo_requerido": "Must provide a valid email",
             "check_password_requerido": "Password is required",
+            "check_password_length": "Password must be at least 6 chars long",
             "check_edad_requerido": "Age is required",
             "check_telefono_requerido": "Phone is required"
         },

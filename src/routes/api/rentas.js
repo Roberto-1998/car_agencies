@@ -15,7 +15,6 @@ router.get('/', [
 
 router.post('/', [
     validarJWT,
-    esAdminRol,
     check('autoId', 'routes.renta.check_autoId_requerido').notEmpty(),
     check('autoId').custom(existeAutoPorId),
     check('fechaInicio', 'routes.renta.check_fechaInicio_requerida').notEmpty(),

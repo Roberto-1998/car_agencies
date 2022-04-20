@@ -12,7 +12,7 @@ const obtenerRentas = async() => {
             include: [{
                     model: Usuario,
                     as: 'usuario',
-                    attributes: ['nombre', 'apellidos', 'telefono']
+                    attributes: ['nombre', 'apellidos']
                 },
                 {
                     model: Auto,
