@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const { check } = require('express-validator');
-const { validarCampos, validarRentaAutoUsuario, esAdminRol, nodeCache } = require('../../middlewares');
+const { validarCampos, esAdminRol, nodeCache } = require('../../middlewares');
 const { existeAutoPorId, existeRentaPorUuid, verificarAutoDisponible } = require('../../helpers');
 const { obtenerRentas, crearRenta, borrarRenta, actualizarRenta } = require('../../controllers');
 const { validarJWT } = require('../../middlewares');
@@ -19,7 +19,6 @@ router.post('/', [
     check('autoId').custom(existeAutoPorId),
     check('fechaInicio', 'routes.renta.check_fechaInicio_requerida').notEmpty(),
     check('fechaFinal', 'routes.renta.check_fechaFinal_requerida').notEmpty(),
-    /*  validarRentaAutoUsuario, */
     check('autoId').custom(verificarAutoDisponible),
     validarCampos
 ], crearRenta)

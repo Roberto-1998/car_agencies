@@ -9,13 +9,13 @@ const { validarJWT } = require('../../middlewares');
 
 
 router.get('/', [
-    /*  validarJWT, */
+    validarJWT,
     nodeCache(5),
     validarCampos,
 ], obtenerAutos)
 
 router.get('/:id', [
-    /*  validarJWT, */
+    validarJWT,
     check('id').custom(existeAutoPorId),
     validarCampos,
     nodeCache(5)
@@ -28,8 +28,8 @@ router.get('/search/:marca', [
 ], buscarAutos);
 
 router.post('/', [
-    /*   validarJWT,
-      esAdminRol, */
+    validarJWT,
+    esAdminRol,
     check('marca', 'routes.auto.check_marca_requerida').notEmpty(),
     check('modelo', 'routes.auto.check_modelo_requerido').notEmpty(),
     check('km', 'routes.auto.check_km_requeridos').notEmpty(),
