@@ -24,11 +24,15 @@ module.exports = (sequelize, DataTypes) => {
         },
         autoId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         usuarioId: {
             type: DataTypes.INTEGER,
-            allowNull: false
+            allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         fechaInicio: {
             type: DataTypes.DATEONLY,

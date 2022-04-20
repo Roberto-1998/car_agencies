@@ -25,6 +25,8 @@ module.exports = (sequelize, DataTypes) => {
         agenciaId: {
             type: DataTypes.UUID,
             allowNull: false,
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         marca: {
             type: DataTypes.STRING,

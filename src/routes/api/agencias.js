@@ -8,13 +8,13 @@ const { validarCampos, esAdminRol, validarJWT, nodeCache } = require('../../midd
 
 
 router.get('/', [
-    validarJWT,
+    /*  validarJWT, */
     nodeCache(5)
 ], obtenerAgencias)
 
 router.post('/', [
-    validarJWT,
-    esAdminRol,
+    /*   validarJWT,
+      esAdminRol, */
     check('nombre', 'routes.agencia.check_nombre_requerido').notEmpty(),
     check('telefono', 'routes.agencia.check_telefono_requerido').notEmpty(),
     check('direccion', 'routes.agencia.check_direccion_requerida').notEmpty(),
@@ -29,8 +29,8 @@ router.put('/:id', [
 ], actualizarAgencia)
 
 router.delete('/:id', [
-    validarJWT,
-    esAdminRol,
+    /*  validarJWT,
+     esAdminRol, */
     check('id').custom(existeAgenciaPorId),
     validarCampos
 ], borrarAgencia)

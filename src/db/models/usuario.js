@@ -55,7 +55,9 @@ module.exports = (sequelize, DataTypes) => {
         rol: {
             type: DataTypes.STRING,
             allowNull: false,
-            defaultValue: 'user_rol'
+            defaultValue: 'user_rol',
+            onDelete: 'CASCADE',
+            onUpdate: 'CASCADE'
         },
         google: {
             type: DataTypes.BOOLEAN,
