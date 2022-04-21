@@ -120,10 +120,13 @@ const eliminarAuto = async(id) => {
 
         const auto = await Auto.findByPk(id);
         if (auto.imagen) {
-            const pathImage = path.join(__dirname, '../../../public/uploads/images/autos', auto.imagen)
-            if (fs.existsSync(pathImage)) {
-                fs.unlinkSync(pathImage);
-            }
+            const nombreArr = auto.imagen.split('/');
+            const nombre = nombreArr[nombreArr.length - 1];
+            const [public_id] = nombre.split('.');
+
+            cloudinary.uploader.destroy(public_id);
+
+
         }
 
         return await Auto.destroy({ where: { id } });
